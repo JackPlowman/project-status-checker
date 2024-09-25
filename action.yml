@@ -1,0 +1,5 @@
+name: project-status-checker
+description: Check the status(s) of urls
+runs:
+  using: "docker"
+  image: "Dockerfile"
