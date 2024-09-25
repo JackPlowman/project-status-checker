@@ -38,6 +38,9 @@
     ".": {
       "changelog-path": "CHANGELOG.md",
       "release-type": "simple"
+    },
+    "checker": {
+      "release-type": "python"
     }
   },
   "draft-pull-request": true
