@@ -8,3 +8,15 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "main"
+
+  - package-ecosystem: "npm"
+    directory: "."
+    commit-message:
+      prefix: "deps(typescript)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
+    groups:
+      typescript:
+        patterns:
+          - "*"
