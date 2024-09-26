@@ -41,5 +41,5 @@
     }
   },
   "draft-pull-request": true,
-  "versioning": "always-bump-minor"
+  "bump-minor-pre-major": true
 }
