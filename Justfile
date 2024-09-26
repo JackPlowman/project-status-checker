@@ -22,6 +22,10 @@ install:
 unit-test:
     poetry run pytest checker --cov=checker --cov-report=xml
 
+# Build the Docker image
+docker-build:
+    docker build -t jackplowman/project-status-checker:latest .
+
 # ------------------------------------------------------------------------------
 # Ruff - # Set up red-knot when it's ready
 # ------------------------------------------------------------------------------
