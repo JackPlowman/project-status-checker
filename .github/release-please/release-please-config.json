@@ -40,6 +40,5 @@
       "release-type": "simple"
     }
   },
-  "draft-pull-request": true,
-  "bump-minor-pre-major": true
+  "draft-pull-request": true
 }
