@@ -1,4 +1,48 @@
 # ------------------------------------------------------------------------------
+# General Commands
+# ------------------------------------------------------------------------------
+
+clean:
+    find . \( \
+      -name '__pycache__' -o \
+      -name '.coverage' -o \
+      -name '.mypy_cache' -o \
+      -name '.pytest_cache' -o \
+      -name '.ruff_cache' -o \
+      -name '*.pyc' -o \
+      -name '*.pyd' -o \
+      -name '*.pyo' -o \
+      -name 'coverage.xml' -o \
+      -name 'db.sqlite3' \
+    \) -print | xargs rm -rfv
+
+install:
+    poetry install
+
+unit-test:
+    poetry run pytest checker --cov=checker --cov-report=xml
+
+# ------------------------------------------------------------------------------
+# Ruff - # Set up red-knot when it's ready
+# ------------------------------------------------------------------------------
+
+ruff-fix:
+    just ruff-lint-fix
+    just ruff-format-fix
+
+ruff-lint:
+    poetry run ruff check .
+
+ruff-lint-fix:
+    poetry run ruff check . --fix
+
+ruff-format:
+    poetry run ruff format --check .
+
+ruff-format-fix:
+    poetry run ruff format .
+
+# ------------------------------------------------------------------------------
 # Prettier
 # ------------------------------------------------------------------------------
 
