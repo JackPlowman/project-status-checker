@@ -26,6 +26,9 @@ unit-test:
 docker-build:
     docker build -t jackplowman/project-status-checker:latest .
 
+docker-run:
+    docker run --rm jackplowman/project-status-checker:latest
+
 # ------------------------------------------------------------------------------
 # Ruff - # Set up red-knot when it's ready
 # ------------------------------------------------------------------------------
