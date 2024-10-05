@@ -8,3 +8,11 @@ updates:
     schedule:
       interval: "daily"
     target-branch: "main"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    commit-message:
+      prefix: "deps(docker)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
