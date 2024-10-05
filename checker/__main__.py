@@ -1,3 +1,6 @@
-from main import main
+def main() -> None:
+    print("Hello World")
 
-main()
+
+if __name__ == "__main__":
+    main()
