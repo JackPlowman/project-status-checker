@@ -20,7 +20,7 @@ install:
     poetry install
 
 unit-test:
-    poetry run pytest checker --cov=checker --cov-report=xml
+    poetry run pytest checker --cov=. --cov-report=xml
 
 # Build the Docker image
 docker-build:
