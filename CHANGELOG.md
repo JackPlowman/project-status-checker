@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.0.2](https://github.com/JackPlowman/project-status-checker/compare/v0.0.1...v0.0.2) (2024-10-10)
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** bump UmbrellaDocs/action-linkspector from 1.2.1 to 1.2.2 ([#57](https://github.com/JackPlowman/project-status-checker/issues/57)) ([82fe2e0](https://github.com/JackPlowman/project-status-checker/commit/82fe2e04f1b2917aa8381157863aa621ed60b816))
+
+
+### 📝 Documentation
+
+* Add README with project description and usage ([#61](https://github.com/JackPlowman/project-status-checker/issues/61)) ([53b9caf](https://github.com/JackPlowman/project-status-checker/commit/53b9cafbad5dedb4d6937eb13a583b20c057a17d)), closes [#64](https://github.com/JackPlowman/project-status-checker/issues/64)
+* Update README with badges and restructure content ([#62](https://github.com/JackPlowman/project-status-checker/issues/62)) ([d690f64](https://github.com/JackPlowman/project-status-checker/commit/d690f645bc1472ff2f91c000621f3a950d9c365b)), closes [#59](https://github.com/JackPlowman/project-status-checker/issues/59)
+
+
+### 🧰 Maintenance
+
+* Add .dockerignore file ([#74](https://github.com/JackPlowman/project-status-checker/issues/74)) ([aec5024](https://github.com/JackPlowman/project-status-checker/commit/aec5024b81ed2c99a5397dffd7fabc39ef4cab51)), closes [#73](https://github.com/JackPlowman/project-status-checker/issues/73)
+* Add Docker build and run workflow ([#68](https://github.com/JackPlowman/project-status-checker/issues/68)) ([b38e41d](https://github.com/JackPlowman/project-status-checker/commit/b38e41d54c633bef8e3be0727eb873e679848b0a)), closes [#70](https://github.com/JackPlowman/project-status-checker/issues/70)
+* Add Docker Dependency Updates to Dependabot ([#60](https://github.com/JackPlowman/project-status-checker/issues/60)) ([7d8bff3](https://github.com/JackPlowman/project-status-checker/commit/7d8bff3e5aca2719ddf229cea530e86b911a3210)), closes [#56](https://github.com/JackPlowman/project-status-checker/issues/56)
+* Add Python GitHook ([#81](https://github.com/JackPlowman/project-status-checker/issues/81)) ([af1ce42](https://github.com/JackPlowman/project-status-checker/commit/af1ce42f8c71a863d871c39007746e32382d3714)), closes [#80](https://github.com/JackPlowman/project-status-checker/issues/80)
+* Add setup-dependencies action and refactor workflows ([#71](https://github.com/JackPlowman/project-status-checker/issues/71)) ([bd40515](https://github.com/JackPlowman/project-status-checker/commit/bd40515d2a6754720bc2a7cd4d7808885190f072)), closes [#72](https://github.com/JackPlowman/project-status-checker/issues/72)
+* Disable Natural Language Validation in Code Quality Workflow ([#63](https://github.com/JackPlowman/project-status-checker/issues/63)) ([3a86e3c](https://github.com/JackPlowman/project-status-checker/commit/3a86e3c1d1612c9d86ac0e985fed121d26b17ec6)), closes [#65](https://github.com/JackPlowman/project-status-checker/issues/65)
+* GitHooks Only Trigger On Folder Changes ([#83](https://github.com/JackPlowman/project-status-checker/issues/83)) ([41368cc](https://github.com/JackPlowman/project-status-checker/commit/41368cc3dff327b6662cd9e4764719dfbed81341)), closes [#82](https://github.com/JackPlowman/project-status-checker/issues/82)
+* Optimize Dockerfile and add run script ([#67](https://github.com/JackPlowman/project-status-checker/issues/67)) ([2b14c35](https://github.com/JackPlowman/project-status-checker/commit/2b14c35131fe81cc945d3e59f731e2f77937f031)), closes [#66](https://github.com/JackPlowman/project-status-checker/issues/66)
+* Override coverage source path for SonarCloud ([#75](https://github.com/JackPlowman/project-status-checker/issues/75)) ([2594b2d](https://github.com/JackPlowman/project-status-checker/commit/2594b2d9102beabf5c9624666260b0199cbd5f5f)), closes [#76](https://github.com/JackPlowman/project-status-checker/issues/76)
+* Update coverage path in unit test command ([#77](https://github.com/JackPlowman/project-status-checker/issues/77)) ([5d44ee9](https://github.com/JackPlowman/project-status-checker/commit/5d44ee97eb880ce8099e8a127c43788e9cbb626c)), closes [#78](https://github.com/JackPlowman/project-status-checker/issues/78)
+* Upgrade Python to 3.13 and update configurations ([#84](https://github.com/JackPlowman/project-status-checker/issues/84)) ([959b69a](https://github.com/JackPlowman/project-status-checker/commit/959b69a31d59c3e1623c6de6382b95d31b595d59)), closes [#79](https://github.com/JackPlowman/project-status-checker/issues/79)
+
 ## 0.0.1 (2024-09-26)
 
 
