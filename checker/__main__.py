@@ -1,5 +1,5 @@
 def main() -> None:
-    """Main function"""
+    """Main function."""
     print("Hello World")
 
 
