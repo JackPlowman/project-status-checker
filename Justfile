@@ -34,8 +34,8 @@ docker-run:
 # ------------------------------------------------------------------------------
 
 ruff-fix:
-    just ruff-lint-fix
     just ruff-format-fix
+    just ruff-lint-fix
 
 ruff-lint:
     poetry run ruff check .
