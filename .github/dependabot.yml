@@ -16,3 +16,15 @@ updates:
     schedule:
       interval: "monthly"
     target-branch: "main"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    commit-message:
+      prefix: "deps(python)"
+    schedule:
+      interval: "monthly"
+    target-branch: "main"
+    groups:
+      python:
+        patterns:
+          - "*"
