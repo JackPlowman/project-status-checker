@@ -54,11 +54,15 @@ jobs:
       - name: Install Poetry Dependencies
         run: just install
 
-      - name: Check Python Code Quality (Ruff)
-        run: just ruff-lint
-
       - name: Check Python Code Format (Ruff)
         run: just ruff-format
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+
+      - name: Check Python Code Quality (Ruff)
+        run: just ruff-lint
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
 
   check-markdown-links:
     name: Check Markdown links
