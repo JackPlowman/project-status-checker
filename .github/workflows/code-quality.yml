@@ -10,6 +10,7 @@ permissions:
   contents: read
   packages: read
   statuses: write
+  security-events: write
 
 jobs:
   check-code-quality:
@@ -64,6 +65,31 @@ jobs:
         env:
           RUFF_OUTPUT_FORMAT: "github"
 
+  upload-python-scanner-results:
+    name: Upload Python Ruff Scanner Results
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python Dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Check Python Code Quality (Ruff)
+        run: just ruff-lint
+        env:
+          RUFF_OUTPUT_FORMAT: "sarif"
+          RUFF_OUTPUT_FILE: "ruff-results.sarif"
+        continue-on-error: true
+
+      - name: Upload analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v3.27.0
+        with:
+          sarif_file: ruff-results.sarif
+          wait-for-processing: true
+
   check-markdown-links:
     name: Check Markdown links
     runs-on: ubuntu-latest
@@ -96,3 +122,41 @@ jobs:
 
       - name: Check Justfile Format
         run: just format-check
+
+  unit-test:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Dependencies
+        uses: ./.github/actions/setup-dependencies
+
+      - name: Run Unit Tests
+        run: just unit-test
+
+      - name: Override Coverage Source Path for SonarCloud
+        run: sed -i "s/<source>\/home\/runner\/work\/project-status-checker\/project-status-checker<\/source>/<source>\/github\/workspace<\/source>/g" /home/runner/work/project-status-checker/project-status-checker/coverage.xml
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  run-codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3.27.0
+        with:
+          languages: python
+          queries: security-and-quality
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3.27.0
