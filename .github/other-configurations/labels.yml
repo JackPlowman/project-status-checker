@@ -58,6 +58,9 @@
 - color: 66A615
   name: just
   description: Pull requests that update Just code
+- color: 1900ff
+  name: markdown
+  description: Pull requests that update Markdown documentation
 # Components
 - color: ff0073
   name: git_hooks
