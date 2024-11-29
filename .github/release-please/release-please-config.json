@@ -40,5 +40,5 @@
       "release-type": "simple"
     }
   },
-  "draft-pull-request": true,
+  "draft-pull-request": true
 }
