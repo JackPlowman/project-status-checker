@@ -1,7 +1,4 @@
-def main() -> None:
-    """Main function."""
-    print("Hello World")
-
+from .checker import run_checker
 
 if __name__ == "__main__":
-    main()
+    run_checker()

@@ -19,6 +19,10 @@ clean:
 install:
     poetry install
 
+# Run the checker
+run:
+    poetry run python -m checker
+
 unit-test:
     poetry run pytest checker --cov=. --cov-report=xml
 
