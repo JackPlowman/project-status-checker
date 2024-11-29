@@ -18,6 +18,7 @@ The tool is written in Python and generates a JSON file that contains any distur
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
     - [GitHub Action Example](#github-action-example)
+    - [Configuration Examples](#configuration-examples)
 
 ## Usage
 
@@ -29,3 +30,9 @@ The GitHub Action is designed to be used in a workflow.
 - name: Check Project Statuses
   uses: jackplowman/project-status-checker@latest
 ```
+
+### Configuration Examples
+
+Some examples of the configuration file can be found in the [examples](examples) directory.
+
+- [Full Example](examples/full_example.json)
