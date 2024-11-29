@@ -2,7 +2,7 @@ from unittest.mock import MagicMock, patch
 
 from checker.checker import run_checker
 
-FILE_PATH="checker.checker"
+FILE_PATH = "checker.checker"
 
 
 @patch(f"{FILE_PATH}.set_up_custom_logging")
