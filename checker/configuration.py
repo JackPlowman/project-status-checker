@@ -3,7 +3,8 @@ from os import getenv
 
 class Configuration:
     """Configuration class to handle the checker configuration."""
-    config_file_path:str
+
+    config_file_path: str
 
     def __init__(self) -> None:
         """Initialize the Configuration class."""
