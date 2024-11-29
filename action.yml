@@ -1,5 +1,12 @@
-name: project-status-checker
+name: "Project Status Checker"
 description: Check the status(s) of urls
+
 runs:
   using: "docker"
   image: "Dockerfile"
+
+inputs:
+  config_file_path:
+    description: "Path to the configuration file"
+    required: false
+    default: "status-checker-config.json"

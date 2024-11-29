@@ -7,7 +7,7 @@ if [ "$CI" = "true" ]; then
   cd ..
 fi
 
-# Run the analyser
+# Run the checker
 python -m checker
 
 # if [ "$CI" = "true" ]; then
