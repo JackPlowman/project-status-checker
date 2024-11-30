@@ -2,7 +2,7 @@
   "urls": [
     {
       "url": "https://www.google.com",
-      "allowed_status_codes": 200
+      "allowed_status_code": 200
     }
   ]
 }
