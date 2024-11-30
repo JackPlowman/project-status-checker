@@ -11,4 +11,3 @@ def test_configuration() -> None:
     assert configuration.config_file_path == config_file_path
     # Clean Up
     del environ["INPUT_CONFIG_FILE_PATH"]
-
