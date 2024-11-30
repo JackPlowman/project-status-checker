@@ -9,6 +9,9 @@ install:
 run:
     poetry run python -m checker
 
+run-with-defaults:
+    INPUT_CONFIG_FILE_PATH="examples/full_example.json" poetry run python -m checker
+
 # ------------------------------------------------------------------------------
 # Test Commands
 # ------------------------------------------------------------------------------

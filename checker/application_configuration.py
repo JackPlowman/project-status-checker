@@ -2,7 +2,7 @@ from os import getenv
 from typing import Self
 
 
-class Configuration:
+class ApplicationConfiguration:
     """Configuration class to handle the checker configuration."""
 
     config_file_path: str

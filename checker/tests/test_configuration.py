@@ -1,6 +1,6 @@
 from os import environ
 
-from checker.configuration import Configuration
+from checker.application_configuration import Configuration
 
 
 def test_configuration() -> None:
