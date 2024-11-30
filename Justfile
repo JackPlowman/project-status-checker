@@ -58,19 +58,19 @@ ruff-fix:
 
 # Check for Ruff issues
 ruff-lint:
-    poetry run ruff check checker
+    poetry run ruff check .
 
 # Fix Ruff lint issues
 ruff-lint-fix:
-    poetry run ruff check checker --fix
+    poetry run ruff check . --fix
 
 # Check for Ruff format issues
 ruff-format:
-    poetry run ruff format --check checker
+    poetry run ruff format --check .
 
 # Fix Ruff format issues
 ruff-format-fix:
-    poetry run ruff format checker
+    poetry run ruff format .
 
 # ------------------------------------------------------------------------------
 # Prettier
