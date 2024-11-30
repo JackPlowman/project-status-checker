@@ -4,12 +4,16 @@ from checker.checker import check_urls, load_configuration_file, run_checker
 
 FILE_PATH = "checker.checker"
 
+
 @patch(f"{FILE_PATH}.check_urls")
 @patch(f"{FILE_PATH}.load_configuration_file")
 @patch(f"{FILE_PATH}.ApplicationConfiguration")
 @patch(f"{FILE_PATH}.set_up_custom_logging")
 def test_run_checker(
-    mock_set_up_custom_logging: MagicMock, mock_application_configuration: MagicMock, load_configuration_file: MagicMock, mock_check_urls: MagicMock
+    mock_set_up_custom_logging: MagicMock,
+    mock_application_configuration: MagicMock,
+    load_configuration_file: MagicMock,
+    mock_check_urls: MagicMock,
 ) -> None:
     """Test the run_checker function."""
     # Act
@@ -48,6 +52,7 @@ def test_load_configuration_file(mock_load: MagicMock, mock_open: MagicMock) -> 
     assert urls[1].allowed_status_code == 404
     mock_open.assert_called_once_with()
     mock_load.assert_called_once_with(mock_open.return_value.__enter__.return_value)
+
 
 @patch(f"{FILE_PATH}.get")
 def test_check_urls(mock_get: MagicMock) -> None:

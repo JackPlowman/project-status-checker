@@ -28,6 +28,7 @@ def load_configuration_file(application_configuration: ApplicationConfiguration)
     logger.debug("Loaded configuration file", file_contents=file_contents)
     return [URL(url["url"], url["allowed_status_code"]) for url in file_contents["urls"]]
 
+
 def check_urls(urls: list[URL]) -> list[URLCheckResult]:
     """Check the URLs."""
     results = []
@@ -39,4 +40,3 @@ def check_urls(urls: list[URL]) -> list[URLCheckResult]:
         except RequestException:
             logger.exception("Failed to check URL", url=url)
     return results
-
