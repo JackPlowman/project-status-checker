@@ -44,7 +44,8 @@ docker-build:
     docker build -t jackplowman/project-status-checker:latest .
 
 docker-run:
-    docker run --rm jackplowman/project-status-checker:latest
+    docker run --rm jackplowman/project-status-checker:latest \
+        -e INPUT_CONFIG_FILE_PATH="examples/full_example.json"
 
 # ------------------------------------------------------------------------------
 # Ruff - Python Linting and Formatting
