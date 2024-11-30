@@ -1,7 +1,26 @@
 # ------------------------------------------------------------------------------
-# General Commands
+# Common Commands
 # ------------------------------------------------------------------------------
 
+install:
+    poetry install
+
+# Run the checker
+run:
+    poetry run python -m checker
+
+# ------------------------------------------------------------------------------
+# Test Commands
+# ------------------------------------------------------------------------------
+
+unit-test:
+    poetry run pytest checker --cov=. --cov-report=xml
+
+# ------------------------------------------------------------------------------
+# Cleaning Commands
+# ------------------------------------------------------------------------------
+
+# Clean up all cache and temporary files
 clean:
     find . \( \
       -name '__pycache__' -o \
@@ -16,15 +35,9 @@ clean:
       -name 'db.sqlite3' \
     \) -print | xargs rm -rfv
 
-install:
-    poetry install
-
-# Run the checker
-run:
-    poetry run python -m checker
-
-unit-test:
-    poetry run pytest checker --cov=. --cov-report=xml
+# ------------------------------------------------------------------------------
+# Docker Commands
+# ------------------------------------------------------------------------------
 
 # Build the Docker image
 docker-build:
@@ -34,22 +47,28 @@ docker-run:
     docker run --rm jackplowman/project-status-checker:latest
 
 # ------------------------------------------------------------------------------
-# Ruff - # Set up red-knot when it's ready
+# Ruff - Python Linting and Formatting
+# Set up ruff red-knot when it's ready
 # ------------------------------------------------------------------------------
 
+# Fix all Ruff issues
 ruff-fix:
     just ruff-format-fix
     just ruff-lint-fix
 
+# Check for Ruff issues
 ruff-lint:
     poetry run ruff check .
 
+# Fix Ruff lint issues
 ruff-lint-fix:
     poetry run ruff check . --fix
 
+# Check for Ruff format issues
 ruff-format:
     poetry run ruff format --check .
 
+# Fix Ruff format issues
 ruff-format-fix:
     poetry run ruff format .
 
