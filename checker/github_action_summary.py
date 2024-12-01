@@ -1,7 +1,7 @@
 from os import environ, getenv
 from pathlib import Path
 
-import MdUtils
+from mdutils.mdutils import MdUtils
 from structlog import get_logger, stdlib
 
 from checker.url_check_result import URLCheckResult

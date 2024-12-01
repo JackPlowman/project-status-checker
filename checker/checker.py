@@ -19,7 +19,7 @@ def run_checker() -> None:
     set_up_custom_logging()
     configuration = ApplicationConfiguration()
     urls = load_configuration_file(configuration)
-    results=check_urls(urls)
+    results = check_urls(urls)
     generate_action_summary(results)
 
 
