@@ -630,6 +630,16 @@ docs = ["furo", "jaraco.packaging (>=9.3)", "jaraco.tidelift (>=1.4)", "rst.link
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-mypy", "pytest-ruff (>=0.2.1)"]
 
 [[package]]
+name = "mdutils"
+version = "1.6.0"
+description = "Useful package for creating Markdown files while executing python code."
+optional = false
+python-versions = "^3.6"
+files = [
+    {file = "mdutils-1.6.0.tar.gz", hash = "sha256:647f3cf00df39fee6c57fa6738dc1160fce1788276b5530c87d43a70cdefdaf1"},
+]
+
+[[package]]
 name = "more-itertools"
 version = "10.5.0"
 description = "More routines for operating on iterables, beyond itertools"
@@ -1277,4 +1287,4 @@ test = ["pytest"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.13"
-content-hash = "2496685ca4e6b973babb60eecfc5837450d58bce46ce7ee9907db1c0e3eaa4b1"
+content-hash = "ed0fb2f1f0997ba7866b245ee9d896c20feaf0c34c6987859d00c4c0013085c6"
