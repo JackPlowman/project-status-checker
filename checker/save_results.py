@@ -28,11 +28,14 @@ def create_tables_if_not_exist(cursor: Cursor) -> None:
         cursor (Cursor): The database cursor.
     """
     tables_created = []
+    # Check if url table exists
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='url'")
     if cursor.fetchone() is None:
         logger.debug("Creating table url")
         cursor.execute("CREATE TABLE url (url_id INTEGER PRIMARY KEY, alias TEXT NOT NULL, url TEXT NOT NULL)")
         logger.debug("Created table results")
+        tables_created.append("url")
+        # Check if results table exists
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")
     if cursor.fetchone() is None:
         logger.debug("Creating table results")
@@ -45,5 +48,6 @@ def create_tables_if_not_exist(cursor: Cursor) -> None:
             "FOREIGN KEY (url_id) REFERENCES urls (url_id))"
         )
         logger.debug("Created table results")
+        tables_created.append("results")
     if tables_created:
         logger.info("Tables created", tables=tables_created)
