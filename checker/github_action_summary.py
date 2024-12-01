@@ -20,7 +20,7 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
         return
     logger.debug("Generating action summary")
     # Generate the markdown contents
-    markdown_file = MdUtils(file_name="markdown.md", title="Github Action Summary")
+    markdown_file = MdUtils(file_name="markdown.md", title="GitHub Action Summary")
     table_headers = ["URL Address", "Status Code", "Success"]
     list_of_strings = [*table_headers]
     for result in results:

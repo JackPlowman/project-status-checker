@@ -2,6 +2,7 @@
 # Common Commands
 # ------------------------------------------------------------------------------
 
+# Install all python dependencies
 install:
     poetry install
 
@@ -9,6 +10,7 @@ install:
 run:
     poetry run python -m checker
 
+# Run the checker with the default full example
 run-with-defaults:
     INPUT_CONFIG_FILE_PATH="examples/full_example.json" poetry run python -m checker
 
@@ -16,8 +18,13 @@ run-with-defaults:
 # Test Commands
 # ------------------------------------------------------------------------------
 
+# Run unit tests
 unit-test:
     poetry run pytest checker --cov=. --cov-report=xml
+
+# Run GitHub Summary tests
+test-github-summary:
+    poetry run pytest tests/github_summary
 
 # ------------------------------------------------------------------------------
 # Cleaning Commands
@@ -46,6 +53,7 @@ clean:
 docker-build:
     docker build -t jackplowman/project-status-checker:latest .
 
+# Run the Docker image
 docker-run:
     docker run \
         --env INPUT_CONFIG_FILE_PATH="examples/full_example.json" \
