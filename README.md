@@ -31,8 +31,8 @@ The GitHub Action is designed to be used in a workflow.
 - name: Check Project Statuses
   uses: jackplowman/project-status-checker@latest
   with:
-    config_file_path: 'config.json'
-    output_file_path: 'output.sqllite'
+    config_file_path: "config.json"
+    output_file_path: "output.sqllite"
 ```
 
 #### Inputs
