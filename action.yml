@@ -15,4 +15,4 @@ inputs:
   output_file_path:
     description: "Path to the output file, if file does not exist it will be created"
     required: false
-    default: "status-checker-output.sqlite"
+    default: "status-checker-output.db"

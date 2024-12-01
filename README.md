@@ -32,15 +32,15 @@ The GitHub Action is designed to be used in a workflow.
   uses: jackplowman/project-status-checker@latest
   with:
     config_file_path: "status-checker-config.json"
-    output_file_path: "status-checker-output.sqlite"
+    output_file_path: "status-checker-output.db"
 ```
 
 #### Inputs
 
-| Name               | Description                        | Required | Default                        |
-| ------------------ | ---------------------------------- | -------- | ------------------------------ |
-| `config_file_path` | The path to the configuration file | No       | `status-checker-config.json`   |
-| `output_file_path` | The path to the output file        | No       | `status-checker-output.sqlite` |
+| Name               | Description                        | Required | Default                      |
+| ------------------ | ---------------------------------- | -------- | ---------------------------- |
+| `config_file_path` | The path to the configuration file | No       | `status-checker-config.json` |
+| `output_file_path` | The path to the output file        | No       | `status-checker-output.db`   |
 
 ### Configuration Examples
 

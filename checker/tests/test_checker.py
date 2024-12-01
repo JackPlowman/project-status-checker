@@ -6,6 +6,7 @@ FILE_PATH = "checker.checker"
 
 
 @patch(f"{FILE_PATH}.generate_action_summary")
+@patch(f"{FILE_PATH}.save_results")
 @patch(f"{FILE_PATH}.check_urls")
 @patch(f"{FILE_PATH}.load_configuration_file")
 @patch(f"{FILE_PATH}.ApplicationConfiguration")
@@ -15,6 +16,7 @@ def test_run_checker(
     mock_application_configuration: MagicMock,
     load_configuration_file: MagicMock,
     mock_check_urls: MagicMock,
+    mock_save_results: MagicMock,
     mock_generate_action_summary: MagicMock,
 ) -> None:
     """Test the run_checker function."""
@@ -25,6 +27,7 @@ def test_run_checker(
     mock_application_configuration.assert_called_once_with()
     load_configuration_file.assert_called_once_with(mock_application_configuration.return_value)
     mock_check_urls.assert_called_once_with(load_configuration_file.return_value)
+    mock_save_results.assert_called_once_with(mock_application_configuration.return_value, mock_check_urls.return_value)
     mock_generate_action_summary.assert_called_once_with(mock_check_urls.return_value)
 
 
