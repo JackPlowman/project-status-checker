@@ -37,6 +37,7 @@ def load_configuration_file(application_configuration: ApplicationConfiguration)
         msg = "Configuration file not found"
         raise FileNotFoundError(msg)
 
+    logger.info("Using configuration file", file_path=found_path)
     with Path(found_path).open() as file:
         file_contents = load(file)
     logger.debug("Loaded configuration file", file_contents=file_contents)
