@@ -1,4 +1,4 @@
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 from sqlite3 import Connection, Cursor, connect
 
 from structlog import get_logger, stdlib
@@ -18,12 +18,12 @@ def save_results(application_configuration: ApplicationConfiguration, results: l
     """
     with connect(application_configuration.output_file_path) as connection:
         cursor = connection.cursor()
-        create_tables_if_not_exist(connection,cursor)
+        create_tables_if_not_exist(connection, cursor)
         for result in results:
             update_results_table(result, connection, cursor)
 
 
-def update_results_table(result: URLCheckResult, connection:Connection, cursor:Cursor) -> None:
+def update_results_table(result: URLCheckResult, connection: Connection, cursor: Cursor) -> None:
     """Update the results table with the URL check result.
 
     Args:
@@ -48,7 +48,7 @@ def update_results_table(result: URLCheckResult, connection:Connection, cursor:C
     connection.commit()
 
 
-def create_tables_if_not_exist(connection:Connection, cursor: Cursor) -> None:
+def create_tables_if_not_exist(connection: Connection, cursor: Cursor) -> None:
     """Create the tables if they do not exist.
 
     Args:
