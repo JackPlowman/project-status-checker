@@ -23,7 +23,21 @@ def run_checker() -> None:
 
 def load_configuration_file(application_configuration: ApplicationConfiguration) -> list[URL]:
     """Load the configuration."""
-    with Path(application_configuration.config_file_path).open() as file:
+    file_paths = [
+        application_configuration.config_file_path,
+        f"github/workspace/{application_configuration.config_file_path}",
+    ]
+    for file_path in file_paths:
+        logger.debug("Checking for configuration file", file_path=file_path)
+        if Path(file_path).exists():
+            found_path = file_path
+            break
+    else:
+        logger.error("Configuration file not found", trialled_file_paths=file_paths)
+        msg = "Configuration file not found"
+        raise FileNotFoundError(msg)
+
+    with Path(found_path).open() as file:
         file_contents = load(file)
     logger.debug("Loaded configuration file", file_contents=file_contents)
     return [URL(url["url"], url["allowed_status_code"]) for url in file_contents["urls"]]
