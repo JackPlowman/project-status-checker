@@ -27,7 +27,13 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
     for result in results:
         list_of_strings.extend([result.url.address, result.status_code, result.success])
     logger.warning(
-        "List of strings", list_of_strings=list_of_strings, length=len(list_of_strings), type=type(list_of_strings)
+        "List of strings",
+        list_of_strings=list_of_strings,
+        length=len(list_of_strings),
+        type=type(list_of_strings),
+        columns=len(table_headers),
+        rows=len(list_of_strings) / len(table_headers),
+        rows_type=type(len(list_of_strings) / len(table_headers)),
     )
     markdown_file.new_table(
         columns=len(table_headers),
