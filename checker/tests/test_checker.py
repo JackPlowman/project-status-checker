@@ -4,6 +4,7 @@ from checker.checker import check_urls, load_configuration_file, run_checker
 
 FILE_PATH = "checker.checker"
 
+
 @patch(f"{FILE_PATH}.generate_action_summary")
 @patch(f"{FILE_PATH}.save_results")
 @patch(f"{FILE_PATH}.check_urls")
