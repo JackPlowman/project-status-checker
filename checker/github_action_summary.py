@@ -26,9 +26,14 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
     list_of_strings = [*table_headers]
     for result in results:
         list_of_strings.extend([result.url.address, result.status_code, result.success])
-    logger.warning("List of strings", list_of_strings=list_of_strings, length=len(list_of_strings), type=type(list_of_strings))
+    logger.warning(
+        "List of strings", list_of_strings=list_of_strings, length=len(list_of_strings), type=type(list_of_strings)
+    )
     markdown_file.new_table(
-        columns=len(table_headers), rows=len(list_of_strings), text=list_of_strings, text_align="center"
+        columns=len(table_headers),
+        rows=len(list_of_strings) / len(table_headers),
+        text=list_of_strings,
+        text_align="center",
     )
 
     with Path(environ["GITHUB_STEP_SUMMARY"]).open("w") as file:
