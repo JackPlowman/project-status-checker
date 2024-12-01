@@ -7,6 +7,7 @@ from structlog import get_logger, stdlib
 
 from checker.application_configuration import ApplicationConfiguration
 from checker.custom_logging import set_up_custom_logging
+from checker.github_action_summary import generate_action_summary
 from checker.url import URL
 from checker.url_check_result import URLCheckResult
 
@@ -18,7 +19,8 @@ def run_checker() -> None:
     set_up_custom_logging()
     configuration = ApplicationConfiguration()
     urls = load_configuration_file(configuration)
-    check_urls(urls)
+    results = check_urls(urls)
+    generate_action_summary(results)
 
 
 def load_configuration_file(application_configuration: ApplicationConfiguration) -> list[URL]:
