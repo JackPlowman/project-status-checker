@@ -16,4 +16,9 @@ def test_github_summary() -> None:
     assert headers_text == ["URL Address", "Status Code", "Success"]
     # Assert row count
     rows = bs4_html.find_all("tr")
-    assert len(rows) > 3
+    assert len(rows) == 2
+    # Assert row contents
+    row1 = rows[1]
+    row1_data = row1.find_all("td")
+    row1_data_text = [data.text for data in row1_data]
+    assert row1_data_text == ["https://www.google.com", "200", "True"]
