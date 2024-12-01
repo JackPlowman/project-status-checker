@@ -37,7 +37,7 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
     )
     markdown_file.new_table(
         columns=len(table_headers),
-        rows=len(list_of_strings) / len(table_headers),
+        rows=int(len(list_of_strings) / len(table_headers)),
         text=list_of_strings,
         text_align="center",
     )
