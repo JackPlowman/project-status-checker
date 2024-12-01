@@ -159,3 +159,14 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           upload: true
+
+  run-action:
+    name: Run Project Status Checker Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+      - name: Run Project Status Checker Action
+        uses: ./
