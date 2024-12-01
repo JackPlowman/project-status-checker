@@ -18,6 +18,7 @@ The tool is written in Python and generates a JSON file that contains any distur
   - [Table of Contents](#table-of-contents)
   - [Usage](#usage)
     - [GitHub Action Example](#github-action-example)
+      - [Inputs](#inputs)
     - [Configuration Examples](#configuration-examples)
 
 ## Usage
@@ -29,7 +30,17 @@ The GitHub Action is designed to be used in a workflow.
 ```yaml
 - name: Check Project Statuses
   uses: jackplowman/project-status-checker@latest
+  with:
+    config_file_path: 'config.json'
+    output_file_path: 'output.sqllite'
 ```
+
+#### Inputs
+
+| Name               | Description                        | Required | Default                        |
+| ------------------ | ---------------------------------- | -------- | ------------------------------ |
+| `config_file_path` | The path to the configuration file | No       | `status-checker-config.json`   |
+| `output_file_path` | The path to the output file        | No       | `status-checker-output.sqlite` |
 
 ### Configuration Examples
 
