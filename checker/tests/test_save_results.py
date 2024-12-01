@@ -40,7 +40,7 @@ def test_create_tables_if_not_exist() -> None:
     # Simulate no tables existing
     mock_cursor.fetchone.side_effect = [None, None]
     # Act
-    create_tables_if_not_exist(mock_connection,mock_cursor)
+    create_tables_if_not_exist(mock_connection, mock_cursor)
     # Assert
     mock_cursor.execute.assert_any_call("SELECT name FROM sqlite_master WHERE type='table' AND name='url'")
     mock_cursor.execute.assert_any_call(
@@ -74,7 +74,9 @@ def test_update_results_table(mock_datetime: MagicMock) -> None:
     update_results_table(mock_result, mock_connection, mock_cursor)
     # Assert
     mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", ("http://example.com",))
-    mock_cursor.execute.assert_any_call("INSERT INTO url (alias, url) VALUES (?, ?)", ("http://example.com", "http://example.com"))
+    mock_cursor.execute.assert_any_call(
+        "INSERT INTO url (alias, url) VALUES (?, ?)", ("http://example.com", "http://example.com")
+    )
     mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", ("http://example.com",))
     mock_cursor.execute.assert_any_call(
         "INSERT INTO results (url_id, success, date_time_stamp) VALUES (?, ?, ?)",
