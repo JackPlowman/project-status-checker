@@ -171,4 +171,4 @@ jobs:
       - name: Run Project Status Checker Action
         uses: ./
         with:
-          config_file_path: "examples/full_example.json"
+          config_file_path: "github/workspace/examples/full_example.json"
