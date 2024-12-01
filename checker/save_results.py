@@ -20,6 +20,7 @@ def save_results(application_configuration: ApplicationConfiguration, _results: 
         create_tables_if_not_exist(cursor)
         connection.commit()
 
+
 def create_tables_if_not_exist(cursor: Cursor) -> None:
     """Create the tables if they do not exist.
 

@@ -37,10 +37,10 @@ The GitHub Action is designed to be used in a workflow.
 
 #### Inputs
 
-| Name               | Description                        | Required | Default                        |
-| ------------------ | ---------------------------------- | -------- | ------------------------------ |
-| `config_file_path` | The path to the configuration file | No       | `status-checker-config.json`   |
-| `output_file_path` | The path to the output file        | No       | `status-checker-output.db` |
+| Name               | Description                        | Required | Default                      |
+| ------------------ | ---------------------------------- | -------- | ---------------------------- |
+| `config_file_path` | The path to the configuration file | No       | `status-checker-config.json` |
+| `output_file_path` | The path to the output file        | No       | `status-checker-output.db`   |
 
 ### Configuration Examples
 
