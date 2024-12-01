@@ -1,4 +1,4 @@
-from sqlite3 import Connection, Cursor, connect
+from sqlite3 import Cursor, connect
 
 from structlog import get_logger, stdlib
 
@@ -26,15 +26,11 @@ def create_tables_if_not_exist(cursor: Cursor) -> None:
     Args:
         cursor (Cursor): The database cursor.
     """
-    tables_created=[]
+    tables_created = []
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")
     if cursor.fetchone() is None:
         cursor.execute("CREATE TABLE url_check_results (url TEXT, status_code INTEGER, success BOOLEAN)")
         cursor.commit()
         logger.debug("Created table url_check_results")
     if tables_created:
-        logger.info("Tables created",tables=tables_created)
-
-
-
-
+        logger.info("Tables created", tables=tables_created)
