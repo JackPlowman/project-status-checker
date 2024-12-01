@@ -25,9 +25,10 @@ def test_run_checker(
     mock_check_urls.assert_called_once_with(load_configuration_file.return_value)
 
 
+@patch(f"{FILE_PATH}.Path.exists", return_value=True)
 @patch(f"{FILE_PATH}.Path.open", new_callable=MagicMock)
 @patch(f"{FILE_PATH}.load")
-def test_load_configuration_file(mock_load: MagicMock, mock_open: MagicMock) -> None:
+def test_load_configuration_file(mock_load: MagicMock, mock_open: MagicMock, mock_exists: MagicMock) -> None:
     """Test the load_configuration_file function."""
     mock_file_contents = {
         "urls": [
@@ -52,6 +53,7 @@ def test_load_configuration_file(mock_load: MagicMock, mock_open: MagicMock) -> 
     assert urls[1].allowed_status_code == 404
     mock_open.assert_called_once_with()
     mock_load.assert_called_once_with(mock_open.return_value.__enter__.return_value)
+    mock_exists.assert_called()
 
 
 @patch(f"{FILE_PATH}.get")
