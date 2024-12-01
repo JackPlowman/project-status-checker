@@ -1,4 +1,5 @@
 from os import environ, getenv
+from pathlib import Path
 
 import MdUtils
 from structlog import get_logger, stdlib
@@ -19,7 +20,7 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
         return
     logger.debug("Generating action summary")
 
-    markdown_file = MdUtils(file_name=environ["GITHUB_STEP_SUMMARY"], title="Github Action Summary")
+    markdown_file = MdUtils(file_name="markdown.md", title="Github Action Summary")
 
     table_headers = ["URL Address", "Status Code", "Success"]
     list_of_strings = [*table_headers]
@@ -28,4 +29,6 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
     markdown_file.new_table(
         columns=len(table_headers), rows=len(list_of_strings), text=list_of_strings, text_align="center"
     )
-    markdown_file.create_md_file()
+
+    with Path(environ["GITHUB_STEP_SUMMARY"]).open("w") as file:
+        file.write(markdown_file.get_md_text())
