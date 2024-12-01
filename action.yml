@@ -9,6 +9,10 @@ runs:
 
 inputs:
   config_file_path:
-    description: "Path to the configuration file"
+    description: "Path to the configuration file, configuration file must be created before running the action"
     required: false
     default: "status-checker-config.json"
+  output_file_path:
+    description: "Path to the output file, if file does not exist it will be created"
+    required: false
+    default: "status-checker-output.sqlite"
