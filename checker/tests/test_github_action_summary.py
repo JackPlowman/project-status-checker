@@ -27,7 +27,7 @@ def test_generate_action_summary(mock_open: MagicMock, mock_getenv: MagicMock) -
     mock_open.assert_called_once_with("w")
     written_content = mock_file.write.call_args[0][0]
     assert written_content == (
-        "\nGithub Action Summary\n=====================\n\n"
+        "\nGitHub Action Summary\n=====================\n\n"
         "|URL Address|Status Code|Success|\n| :---: | :---: | :---: |\n"
         "|http://example.com|200|True|\n|http://example.org|404|True|\n"
     )
