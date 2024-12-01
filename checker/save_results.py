@@ -1,4 +1,4 @@
-from sqlite3 import connect,Connection,Cursor
+from sqlite3 import Connection, Cursor, connect
 
 from structlog import get_logger, stdlib
 
@@ -17,14 +17,7 @@ def save_results(application_configuration: ApplicationConfiguration, results: l
     """
     with connect(application_configuration.config_file_path) as connection:
         cursor = connection.cursor()
-        cursor.execute("CREATE TABLE IF NOT EXISTS url_check_results (url TEXT, status_code INTEGER, success INTEGER)")
-        for result in results:
-            cursor.execute(
-                "INSERT INTO url_check_results (url, status_code, success) VALUES (?, ?, ?)",
-                (result.url.address, result.status_code, result.success),
-            )
-        connection.commit()
-        logger.info("Results saved to database", database_path=application_configuration.config_file_path)
+        create_tables_if_not_exist(cursor)
 
 
 def create_tables_if_not_exist(cursor: Cursor) -> None:
@@ -33,8 +26,15 @@ def create_tables_if_not_exist(cursor: Cursor) -> None:
     Args:
         cursor (Cursor): The database cursor.
     """
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='url_check_results'")
-    return cursor.fetchone() is not None
+    tables_created=[]
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")
+    if cursor.fetchone() is None:
+        cursor.execute("CREATE TABLE url_check_results (url TEXT, status_code INTEGER, success BOOLEAN)")
+        cursor.commit()
+        logger.debug("Created table url_check_results")
+    if tables_created:
+        logger.info("Tables created",tables=tables_created)
+
 
 
 
