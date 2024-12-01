@@ -170,3 +170,5 @@ jobs:
           fetch-depth: 0
       - name: Run Project Status Checker Action
         uses: ./
+        with:
+          config_file_path: "full_example.json"
