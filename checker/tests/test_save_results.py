@@ -15,7 +15,7 @@ def test_save_results(mock_update_results_table: MagicMock, mock_connect: MagicM
     mock_connection = mock_connect.return_value.__enter__.return_value
     mock_cursor = mock_connection.cursor.return_value
     mock_application_configuration = MagicMock(spec=ApplicationConfiguration)
-    mock_application_configuration.output_file_path = "dummy_path"
+    mock_application_configuration.database_file_path = "dummy_path"
     mock_results = [
         MagicMock(spec=URLCheckResult),
         MagicMock(spec=URLCheckResult),
