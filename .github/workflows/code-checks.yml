@@ -160,8 +160,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           upload: true
 
-  run-action:
-    name: Run Project Status Checker Action
+  run-local-action:
+    name: Run Local Project Status Checker Action
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -169,7 +169,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Run Project Status Checker Action
-        uses: ./
+        uses: ./.github/actions/local
         with:
           config_file_path: "examples/full_example.json"
       - name: Download GitHub Action Summary
@@ -184,7 +184,7 @@ jobs:
   test-github-summary:
     name: Test GitHub Summary
     runs-on: ubuntu-latest
-    needs: run-action
+    needs: run-local-action
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2

@@ -1,9 +1,9 @@
-name: "Project Status Checker"
+name: "Project Status Checker (local)"
 description: Check the statuses of urls
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "../../../Dockerfile"
   env:
     GITHUB_ACTION: "true"
 
