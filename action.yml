@@ -1,5 +1,5 @@
 name: "Project Status Checker"
-description: Check the status(s) of urls
+description: Check the statuses of urls
 
 runs:
   using: "docker"
