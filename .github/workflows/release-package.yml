@@ -46,3 +46,20 @@ jobs:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+  test-action:
+    name: Test Action
+    needs: build-and-push-package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+      - name: Run GitHub Stats Analyser (pre-built image)
+        uses: ./
+        with:
+          config_file_path: "examples/full_example.json"
+          database_file_path: "status-checker-database.db"
+      - name: Test Output
+        run: tests/test_database.sh
