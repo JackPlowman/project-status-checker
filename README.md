@@ -32,7 +32,7 @@ The GitHub Action is designed to be used in a workflow.
   uses: jackplowman/project-status-checker@latest
   with:
     config_file_path: "status-checker-config.json"
-    output_file_path: "status-checker-output.db"
+    database_file_path: "status-checker-database.db"
 ```
 
 #### Inputs
@@ -40,7 +40,7 @@ The GitHub Action is designed to be used in a workflow.
 | Name               | Description                        | Required | Default                      |
 | ------------------ | ---------------------------------- | -------- | ---------------------------- |
 | `config_file_path` | The path to the configuration file | No       | `status-checker-config.json` |
-| `output_file_path` | The path to the output file        | No       | `status-checker-output.db`   |
+| `database_file_path` | The path to the database file        | No       | `status-checker-database.db`   |
 
 ### Configuration Examples
 

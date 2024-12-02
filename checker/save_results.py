@@ -16,7 +16,7 @@ def save_results(application_configuration: ApplicationConfiguration, results: l
         application_configuration (ApplicationConfiguration): The application configuration.
         results (list[URLCheckResult]): The list of URL check results.
     """
-    with connect(application_configuration.output_file_path) as connection:
+    with connect(application_configuration.database_file_path) as connection:
         cursor = connection.cursor()
         create_tables_if_not_exist(connection, cursor)
         for result in results:
