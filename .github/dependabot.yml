@@ -6,7 +6,6 @@ updates:
       - "/"
       - ".github/actions/setup-dependencies"
       - ".github/actions/local"
-    directory: "/"
     commit-message:
       prefix: "deps(github-actions)"
     schedule:
