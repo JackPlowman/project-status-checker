@@ -45,7 +45,7 @@ def load_configuration_file(application_configuration: ApplicationConfiguration)
     with Path(found_path).open() as file:
         file_contents = load(file)
     logger.debug("Loaded configuration file", file_contents=file_contents)
-    return [URL(url["url"], url["allowed_status_code"]) for url in file_contents["urls"]]
+    return [URL(url["alias"], url["url"], url["allowed_status_code"]) for url in file_contents["urls"]]
 
 
 def check_urls(urls: list[URL]) -> list[URLCheckResult]:

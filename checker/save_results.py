@@ -36,7 +36,7 @@ def update_results_table(result: URLCheckResult, connection: Connection, cursor:
     url_id = cursor.fetchone()
     # If the URL is not in the database, add it
     if url_id is None:
-        cursor.execute("INSERT INTO url (alias, url) VALUES (?, ?)", (result.url.address, result.url.address))
+        cursor.execute("INSERT INTO url (alias, url) VALUES (?, ?)", (result.url.alias, result.url.address))
         cursor.execute("SELECT url_id FROM url WHERE url = ?", (result.url.address,))
         url_id = cursor.fetchone()
     # Add the result to the results table
@@ -61,7 +61,7 @@ def create_tables_if_not_exist(connection: Connection, cursor: Cursor) -> None:
     if cursor.fetchone() is None:
         logger.debug("Creating table url")
         cursor.execute("CREATE TABLE url (url_id INTEGER PRIMARY KEY, alias TEXT NOT NULL, url TEXT NOT NULL)")
-        logger.debug("Created table results")
+        logger.debug("Created table url")
         tables_created.append("url")
         # Check if results table exists
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")

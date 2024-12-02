@@ -65,7 +65,8 @@ def test_update_results_table(mock_datetime: MagicMock) -> None:
     mock_cursor = MagicMock()
     mock_connection = MagicMock()
     mock_result = MagicMock()
-    mock_result.url.address = "http://example.com"
+    mock_result.url.alias = alias = "example"
+    mock_result.url.address = address = "http://example.com"
     mock_result.success = True
     mock_datetime.now.return_value = "2023-10-10T10:10:10Z"
     # Simulate URL not in database
@@ -73,11 +74,9 @@ def test_update_results_table(mock_datetime: MagicMock) -> None:
     # Act
     update_results_table(mock_result, mock_connection, mock_cursor)
     # Assert
-    mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", ("http://example.com",))
-    mock_cursor.execute.assert_any_call(
-        "INSERT INTO url (alias, url) VALUES (?, ?)", ("http://example.com", "http://example.com")
-    )
-    mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", ("http://example.com",))
+    mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", (address,))
+    mock_cursor.execute.assert_any_call("INSERT INTO url (alias, url) VALUES (?, ?)", (alias, address))
+    mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", (address,))
     mock_cursor.execute.assert_any_call(
         "INSERT INTO results (url_id, success, date_time_stamp) VALUES (?, ?, ?)",
         (1, True, "2023-10-10T10:10:10Z"),
