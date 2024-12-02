@@ -3,7 +3,7 @@ description: Check the statuses of urls
 
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: docker://ghcr.io/jackplowman/project-status-checker:v1.0.0
   env:
     GITHUB_ACTION: "true"
 
