@@ -14,8 +14,8 @@ def test_generate_action_summary(mock_open: MagicMock, mock_getenv: MagicMock) -
     """Test the generate_action_summary function."""
     # Arrange
     environ["GITHUB_STEP_SUMMARY"] = "dummy_path"
-    url1 = URL("http://example.com", 200)
-    url2 = URL("http://example.org", 404)
+    url1 = URL("example1", "http://example.com", 200)
+    url2 = URL("example2", "http://example.org", 404)
     result1 = URLCheckResult(url1, 200, True)  # noqa: FBT003
     result2 = URLCheckResult(url2, 404, True)  # noqa: FBT003
     results = [result1, result2]

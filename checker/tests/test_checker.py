@@ -38,8 +38,8 @@ def test_load_configuration_file(mock_load: MagicMock, mock_open: MagicMock, moc
     """Test the load_configuration_file function."""
     mock_file_contents = {
         "urls": [
-            {"url": "http://example.com", "allowed_status_code": 200},
-            {"url": "http://example.org", "allowed_status_code": 404},
+            {"alias": "1", "url": "http://example.com", "allowed_status_code": 200},
+            {"alias": "2", "url": "http://example.org", "allowed_status_code": 404},
         ]
     }
     mock_load.return_value = mock_file_contents
