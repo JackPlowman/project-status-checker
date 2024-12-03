@@ -11,8 +11,8 @@ inputs:
   config_file_path:
     description: "Path to the configuration file, configuration file must be created before running the action"
     required: false
-    default: "status-checker-config.json"
+    default: "`github/workspace/status-checker-config.json"
   database_file_path:
     description: "Path to the database file, if file does not exist it will be created"
     required: false
-    default: "status-checker-database.db"
+    default: "`github/workspace/status-checker-database.db"

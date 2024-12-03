@@ -27,17 +27,12 @@ def run_checker() -> None:
 
 def load_configuration_file(application_configuration: ApplicationConfiguration) -> list[URL]:
     """Load the configuration."""
-    file_paths = [
-        application_configuration.config_file_path,
-        f"github/workspace/{application_configuration.config_file_path}",
-    ]
-    for file_path in file_paths:
-        logger.debug("Checking for configuration file", file_path=file_path)
-        if Path(file_path).exists():
-            found_path = file_path
-            break
+    file_path = application_configuration.config_file_path
+    logger.debug("Checking for configuration file", file_path=file_path)
+    if Path(file_path).exists():
+        found_path = file_path
     else:
-        logger.error("Configuration file not found", trialled_file_paths=file_paths)
+        logger.error("Configuration file not found", file_path=file_path)
         msg = "Configuration file not found"
         raise FileNotFoundError(msg)
 
