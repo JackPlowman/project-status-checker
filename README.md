@@ -39,8 +39,8 @@ The GitHub Action is designed to be used in a workflow.
 
 | Name                 | Description                        | Required | Default                      |
 | -------------------- | ---------------------------------- | -------- | ---------------------------- |
-| `config_file_path`   | The path to the configuration file | No       | `status-checker-config.json` |
-| `database_file_path` | The path to the database file      | No       | `status-checker-database.db` |
+| `config_file_path`   | The path to the configuration file | No       | `/github/workspace/status-checker-config.json` |
+| `database_file_path` | The path to the database file      | No       | `/github/workspace/status-checker-database.db` |
 
 ### Configuration Examples
 
