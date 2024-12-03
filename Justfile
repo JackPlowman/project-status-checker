@@ -60,7 +60,7 @@ docker-run:
     docker run \
         --env INPUT_CONFIG_FILE_PATH="examples/full_example.json" \
         --env INPUT_DATABASE_FILE_PATH="status-checker-database.sqlite" \
-        --volume "$(pwd)/examples:/examples" \
+        --volume "$(pwd)/github/workspace/examples:/examples" \
         --rm jackplowman/project-status-checker:latest
 
 # ------------------------------------------------------------------------------
