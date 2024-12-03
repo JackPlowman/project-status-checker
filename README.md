@@ -31,16 +31,16 @@ The GitHub Action is designed to be used in a workflow.
 - name: Check Project Statuses
   uses: jackplowman/project-status-checker@latest
   with:
-    config_file_path: "status-checker-config.json"
-    database_file_path: "status-checker-database.db"
+    config_file_path: "github/workspace/status-checker-config.json"
+    database_file_path: "github/workspace/status-checker-database.db"
 ```
 
 #### Inputs
 
-| Name                 | Description                        | Required | Default                      |
-| -------------------- | ---------------------------------- | -------- | ---------------------------- |
-| `config_file_path`   | The path to the configuration file | No       | `status-checker-config.json` |
-| `database_file_path` | The path to the database file      | No       | `status-checker-database.db` |
+| Name                 | Description                                 | Required | Default                                       |
+| -------------------- | ------------------------------------------- | -------- | --------------------------------------------- |
+| `config_file_path`   | The absolute path to the configuration file | No       | `github/workspace/status-checker-config.json` |
+| `database_file_path` | The absolute path to the database file      | No       | `github/workspace/status-checker-database.db` |
 
 ### Configuration Examples
 
