@@ -44,7 +44,9 @@ clean:
       -name '*.pyd' -o \
       -name '*.pyo' -o \
       -name 'coverage.xml' -o \
-      -name 'db.sqlite3' \
+      -name '*.db' \
+      -name '*.sqlite' \
+      -name '*.sqlite3' \
     \) -print | xargs rm -rfv
 
 # ------------------------------------------------------------------------------
