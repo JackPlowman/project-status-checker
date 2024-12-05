@@ -6,6 +6,7 @@ runs:
   image: "../../../Dockerfile"
   env:
     GITHUB_ACTION: "true"
+    FORCE_COLOR: "true"
 
 inputs:
   config_file_path:
