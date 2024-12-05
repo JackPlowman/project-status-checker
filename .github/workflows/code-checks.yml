@@ -155,7 +155,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: "Run Code Limit"
-        uses: getcodelimit/codelimit-action@8ee70f8d3d5b984130e46fb8ccbe229f5e1d68d0
+        uses: getcodelimit/codelimit-action@694118c7698c1d31e0296ea4a05f3fd601d7c224
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           upload: true
