@@ -6,6 +6,7 @@ runs:
   image: docker://ghcr.io/jackplowman/project-status-checker:v1.0.0
   env:
     GITHUB_ACTION: "true"
+    FORCE_COLOR: "true"
 
 inputs:
   config_file_path:
