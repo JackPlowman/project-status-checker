@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.1](https://github.com/JackPlowman/project-status-checker/compare/v1.0.0...v1.0.1) (2024-12-12)
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** bump SonarSource/sonarcloud-github-action from 3.1.0 to 4.0.0 ([#221](https://github.com/JackPlowman/project-status-checker/issues/221)) ([298f78c](https://github.com/JackPlowman/project-status-checker/commit/298f78c46b81880f8b9335cf8ced612822848535))
+
+
+### 🧰 Maintenance
+
+* Force Log Colours ([#218](https://github.com/JackPlowman/project-status-checker/issues/218)) ([d0b061d](https://github.com/JackPlowman/project-status-checker/commit/d0b061d9df090d5af545d3afe414e0fa2319c68f)), closes [#217](https://github.com/JackPlowman/project-status-checker/issues/217)
+* Update CodeLimit Action and Permissions ([#225](https://github.com/JackPlowman/project-status-checker/issues/225)) ([e35b232](https://github.com/JackPlowman/project-status-checker/commit/e35b2324d6315fecb675c12702f5b113304ac76e)), closes [#226](https://github.com/JackPlowman/project-status-checker/issues/226)
+
 ## 1.0.0 (2024-12-03)
 
 
