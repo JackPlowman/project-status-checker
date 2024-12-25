@@ -21,9 +21,10 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       # Lint and Format everything but Python
       - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v7.1.0
+        uses: super-linter/super-linter/slim@v7.2.1
         env:
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
@@ -47,6 +48,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Dependencies
         uses: ./.github/actions/setup-dependencies
       - name: Install Poetry Dependencies
@@ -68,6 +70,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Python Dependencies
         uses: ./.github/actions/setup-dependencies
       - name: Check Python Code Quality (Ruff)
@@ -86,10 +89,11 @@ jobs:
     name: Check Markdown links
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Check Markdown links
         uses: UmbrellaDocs/action-linkspector@v1.2.4
         with:
@@ -103,10 +107,11 @@ jobs:
     name: Check Justfile Format
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Set up Just
         uses: extractions/setup-just@v2
       - name: Check Justfile Format
@@ -120,6 +125,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Dependencies
         uses: ./.github/actions/setup-dependencies
       - name: Run Unit Tests
@@ -127,7 +133,7 @@ jobs:
       - name: Override Coverage Source Path for SonarCloud
         run: sed -i "s/<source>\/home\/runner\/work\/project-status-checker\/project-status-checker<\/source>/<source>\/github\/workspace<\/source>/g" /home/runner/work/project-status-checker/project-status-checker/coverage.xml
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v4.0.0
+        uses: Sonarsource/sonarqube-scan-action@v4.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -136,8 +142,11 @@ jobs:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3.27.0
         with:
@@ -157,6 +166,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: "Run CodeLimit"
         uses: getcodelimit/codelimit-action@v1
 
@@ -172,7 +182,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Install the latest version of uv
-        uses: astral-sh/setup-uv@v4.2.0
+        uses: astral-sh/setup-uv@v5.1.0
         with:
           version: "latest"
       - name: Run zizmor 🌈
@@ -193,6 +203,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Run Project Status Checker Action
         uses: ./.github/actions/local
         with:
@@ -215,6 +226,7 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
+          persist-credentials: false
       - name: Setup Dependencies
         uses: ./.github/actions/setup-dependencies
       - name: Download Artifact
