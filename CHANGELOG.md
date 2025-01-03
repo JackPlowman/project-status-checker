@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.0.1](https://github.com/JackPlowman/project-status-checker/compare/v1.0.0...v1.0.1) (2025-01-03)
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** bump SonarSource/sonarcloud-github-action from 3.1.0 to 4.0.0 ([#221](https://github.com/JackPlowman/project-status-checker/issues/221)) ([298f78c](https://github.com/JackPlowman/project-status-checker/commit/298f78c46b81880f8b9335cf8ced612822848535))
+* **python:** Bump Development Versions ([#246](https://github.com/JackPlowman/project-status-checker/issues/246)) ([a12a03b](https://github.com/JackPlowman/project-status-checker/commit/a12a03bdab598f384d2801a4760c095ee2ac68cb))
+
+
+### 🧰 Maintenance
+
+* Add Code of Conduct ([#240](https://github.com/JackPlowman/project-status-checker/issues/240)) ([bdec804](https://github.com/JackPlowman/project-status-checker/commit/bdec804e9f4837292cdec5291dbb403a4c0048b6)), closes [#241](https://github.com/JackPlowman/project-status-checker/issues/241)
+* Add Zizmor Job ([#235](https://github.com/JackPlowman/project-status-checker/issues/235)) ([a6cb0bb](https://github.com/JackPlowman/project-status-checker/commit/a6cb0bb1b642d5d6c2a3680b7ca3529948b1b3e5)), closes [#234](https://github.com/JackPlowman/project-status-checker/issues/234)
+* Force Log Colours ([#218](https://github.com/JackPlowman/project-status-checker/issues/218)) ([d0b061d](https://github.com/JackPlowman/project-status-checker/commit/d0b061d9df090d5af545d3afe414e0fa2319c68f)), closes [#217](https://github.com/JackPlowman/project-status-checker/issues/217)
+* Migrate SonarCloud GitHub Action to SonarQube ([#238](https://github.com/JackPlowman/project-status-checker/issues/238)) ([034f94f](https://github.com/JackPlowman/project-status-checker/commit/034f94fa2647b4890f2e06b83f6901174c17a643)), closes [#229](https://github.com/JackPlowman/project-status-checker/issues/229)
+* Update CodeLimit Action and Permissions ([#225](https://github.com/JackPlowman/project-status-checker/issues/225)) ([e35b232](https://github.com/JackPlowman/project-status-checker/commit/e35b2324d6315fecb675c12702f5b113304ac76e)), closes [#226](https://github.com/JackPlowman/project-status-checker/issues/226)
+* Update license to 2025 ([#242](https://github.com/JackPlowman/project-status-checker/issues/242)) ([bc92116](https://github.com/JackPlowman/project-status-checker/commit/bc92116559be9e68f50d7a534437e565b170c460)), closes [#243](https://github.com/JackPlowman/project-status-checker/issues/243)
+
 ## 1.0.0 (2024-12-03)
 
 
