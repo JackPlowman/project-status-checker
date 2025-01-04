@@ -9,13 +9,13 @@ on:
 permissions:
   contents: read
   packages: read
-  statuses: write
-  security-events: write
 
 jobs:
   check-code-quality:
     name: Check Code Quality
     runs-on: ubuntu-latest
+    permissions:
+      statuses: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -43,6 +43,8 @@ jobs:
   check-python-code-format-and-quality:
     name: Check Python Code Format and Quality
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -129,6 +131,8 @@ jobs:
   run-codeql-analysis:
     name: CodeQL Analysis
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
