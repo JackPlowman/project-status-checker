@@ -53,26 +53,6 @@ jobs:
         uses: ./.github/actions/setup-dependencies
       - name: Install Poetry Dependencies
         run: just install
-      - name: Check Python Code Format (Ruff)
-        run: just ruff-format
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
-      - name: Check Python Code Quality (Ruff)
-        run: just ruff-lint
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
-
-  upload-python-scanner-results:
-    name: Upload Python Ruff Scanner Results
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - name: Setup Python Dependencies
-        uses: ./.github/actions/setup-dependencies
       - name: Check Python Code Quality (Ruff)
         run: just ruff-lint
         env:
@@ -84,6 +64,14 @@ jobs:
         with:
           sarif_file: ruff-results.sarif
           wait-for-processing: true
+      - name: Check Python Code Format (Ruff)
+        run: just ruff-format
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+      - name: Check Python Code Quality (Ruff)
+        run: just ruff-lint
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
 
   check-markdown-links:
     name: Check Markdown links
