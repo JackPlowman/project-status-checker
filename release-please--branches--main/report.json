@@ -1,12 +1,12 @@
 {
-  "version": "0.17.1",
-  "uuid": "ea5058f4-2521-43b3-a369-6bccf92d0745",
-  "timestamp": "2025-01-04T19:48:38+00:00",
+  "version": "0.18.1",
+  "uuid": "fed858fa-79c1-4819-bd63-64e4455cc82e",
+  "timestamp": "2025-01-12T12:34:32+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
     "name": "project-status-checker",
-    "branch": "HEAD"
+    "branch": "release-please--branches--main"
   },
   "codebase": {
     "totals": {
