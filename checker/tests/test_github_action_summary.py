@@ -10,7 +10,7 @@ FILE_PATH = "checker.github_action_summary"
 
 @patch(f"{FILE_PATH}.getenv", return_value="true")
 @patch(f"{FILE_PATH}.Path.open", new_callable=MagicMock)
-def test_generate_action_summary(mock_open: MagicMock, mock_getenv: MagicMock) -> None:
+def test_generate_action_summary(mock_open: MagicMock, _mock_getenv: MagicMock) -> None:
     """Test the generate_action_summary function."""
     # Arrange
     environ["GITHUB_STEP_SUMMARY"] = "dummy_path"
