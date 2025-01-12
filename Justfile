@@ -4,7 +4,11 @@
 
 # Install all python dependencies
 install:
-    poetry install
+    poetry install -E dev -E test
+
+# Install only root dependencies
+install-only-root:
+    poetry install --only-root
 
 # Run the checker
 run:
