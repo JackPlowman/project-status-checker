@@ -1,7 +1,7 @@
 {
-  "version": "0.17.1",
-  "uuid": "ad0d4658-4130-4afd-ada2-1187fe2a5ed4",
-  "timestamp": "2025-01-04T19:48:24+00:00",
+  "version": "0.18.1",
+  "uuid": "620b025a-a5c5-4d06-aed0-0f39e0122414",
+  "timestamp": "2025-01-12T12:34:05+00:00",
   "root": "/github/workspace",
   "repository": {
     "owner": "JackPlowman",
