@@ -80,4 +80,5 @@ convention = "google"
 known-first-party = ["checker"]
 
 [tool.vulture]
-ignore_names = ["*/plugins/*"]
+ignore_names = ["side_effect"]
+exclude = "*/plugins/*"
