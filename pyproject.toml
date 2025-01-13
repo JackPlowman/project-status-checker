@@ -81,4 +81,4 @@ known-first-party = ["checker"]
 
 [tool.vulture]
 ignore_names = ["side_effect"]
-exclude = "*/plugins/*"
+exclude = ["*/plugins/*"]
