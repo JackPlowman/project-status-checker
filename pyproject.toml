@@ -17,10 +17,7 @@ dev = [
   "vulture==2.14",
   "zizmor==1.1.0",
 ]
-test = [
-  "Markdown==3.7",
-  "beautifulsoup4==4.12.3",
-]
+test = ["Markdown==3.7", "beautifulsoup4==4.12.3"]
 
 [tool.poetry]
 package-mode = false
@@ -83,4 +80,4 @@ convention = "google"
 known-first-party = ["checker"]
 
 [tool.vulture]
-ignore_names = ["side_effect"]
+ignore_names = ["*/plugins/*"]
