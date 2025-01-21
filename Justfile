@@ -20,6 +20,10 @@ run-with-defaults:
     INPUT_CONFIG_FILE_PATH="examples/full_example.json" \
     poetry run python -m checker
 
+# Validates Pyproject
+pyproject-check:
+    poetry check
+
 # ------------------------------------------------------------------------------
 # Test Commands
 # ------------------------------------------------------------------------------
