@@ -4,25 +4,17 @@
 
 # Install all python dependencies
 install:
-    poetry install -E dev -E test
-
-# Install only root dependencies
-install-only-root:
-    poetry install --only-root
+    uv sync --extra dev --extra test
 
 # Run the checker
 run:
-    poetry run python -m checker
+    uv run python -m checker
 
 # Run the checker with the default full example
 run-with-defaults:
     INPUT_DATABASE_FILE_PATH="status-checker-database.db" \
     INPUT_CONFIG_FILE_PATH="examples/full_example.json" \
-    poetry run python -m checker
-
-# Validates Pyproject
-pyproject-check:
-    poetry check
+    uv run python -m checker
 
 # ------------------------------------------------------------------------------
 # Test Commands
@@ -30,11 +22,11 @@ pyproject-check:
 
 # Run unit tests
 unit-test:
-    poetry run pytest checker --cov=. --cov-report=xml
+    uv run pytest checker --cov=. --cov-report=xml
 
 # Run GitHub Summary tests
 test-github-summary:
-    poetry run pytest tests/github_summary
+    uv run pytest tests/github_summary
 
 # ------------------------------------------------------------------------------
 # Cleaning Commands
@@ -85,19 +77,19 @@ ruff-fix:
 
 # Check for Ruff issues
 ruff-lint:
-    poetry run ruff check .
+    uv run ruff check .
 
 # Fix Ruff lint issues
 ruff-lint-fix:
-    poetry run ruff check . --fix
+    uv run ruff check . --fix
 
 # Check for Ruff format issues
 ruff-format:
-    poetry run ruff format --check .
+    uv run ruff format --check .
 
 # Fix Ruff format issues
 ruff-format-fix:
-    poetry run ruff format .
+    uv run ruff format .
 
 # ------------------------------------------------------------------------------
 # Other Python Tools
@@ -105,7 +97,7 @@ ruff-format-fix:
 
 # Check for unused code
 vulture:
-    poetry run vulture .
+    uv run vulture .
 
 # ------------------------------------------------------------------------------
 # Prettier
