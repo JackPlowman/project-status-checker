@@ -81,7 +81,7 @@ ruff-checks:
     just ruff-lint-check
 
 # Check for Ruff issues
-ruff-lint:
+ruff-lint-check:
     uv run ruff check .
 
 # Fix Ruff lint issues
@@ -89,7 +89,7 @@ ruff-lint-fix:
     uv run ruff check . --fix
 
 # Check for Ruff format issues
-ruff-format:
+ruff-format-check:
     uv run ruff format --check .
 
 # Fix Ruff format issues
