@@ -67,7 +67,7 @@ jobs:
           sarif_file: ruff-results.sarif
           wait-for-processing: true
       - name: Check Python Code Format (Ruff)
-        run: just ruff-format
+        run: just ruff-format-check
         env:
           RUFF_OUTPUT_FORMAT: "github"
       - name: Check Python Code Quality (Ruff)
