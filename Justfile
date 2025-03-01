@@ -75,8 +75,13 @@ ruff-fix:
     just ruff-format-fix
     just ruff-lint-fix
 
+# Check for all Ruff issues
+ruff-checks:
+    just ruff-format-check
+    just ruff-lint-check
+
 # Check for Ruff issues
-ruff-lint:
+ruff-lint-check:
     uv run ruff check .
 
 # Fix Ruff lint issues
@@ -84,7 +89,7 @@ ruff-lint-fix:
     uv run ruff check . --fix
 
 # Check for Ruff format issues
-ruff-format:
+ruff-format-check:
     uv run ruff format --check .
 
 # Fix Ruff format issues
@@ -118,6 +123,13 @@ format:
 
 format-check:
     just --fmt --check --unstable
+
+# ------------------------------------------------------------------------------
+# gitleaks
+# ------------------------------------------------------------------------------
+
+gitleaks-detect:
+    gitleaks detect --source . > /dev/null
 
 # ------------------------------------------------------------------------------
 # Git Hooks
