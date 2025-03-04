@@ -122,8 +122,6 @@ jobs:
         uses: ./.github/actions/setup-dependencies
       - name: Run Unit Tests
         run: just unit-test
-      - name: Override Coverage Source Path for SonarCloud
-        run: sed -i "s/<source>\/home\/runner\/work\/project-status-checker\/project-status-checker<\/source>/<source>\/github\/workspace<\/source>/g" /home/runner/work/project-status-checker/project-status-checker/coverage.xml
       - name: SonarCloud Scan
         uses: Sonarsource/sonarqube-scan-action@v5.0.0
         env:
