@@ -1,5 +1,45 @@
 # Changelog
 
+## [1.0.1](https://github.com/JackPlowman/project-status-checker/compare/v1.0.0...v1.0.1) (2025-03-05)
+
+
+### ⬆️ Dependency updates
+
+* **github-actions:** bump SonarSource/sonarcloud-github-action from 3.1.0 to 4.0.0 ([#221](https://github.com/JackPlowman/project-status-checker/issues/221)) ([298f78c](https://github.com/JackPlowman/project-status-checker/commit/298f78c46b81880f8b9335cf8ced612822848535))
+* **python:** Bump Development Versions ([#246](https://github.com/JackPlowman/project-status-checker/issues/246)) ([a12a03b](https://github.com/JackPlowman/project-status-checker/commit/a12a03bdab598f384d2801a4760c095ee2ac68cb))
+
+
+### 🧰 Maintenance
+
+* Add Code of Conduct ([#240](https://github.com/JackPlowman/project-status-checker/issues/240)) ([bdec804](https://github.com/JackPlowman/project-status-checker/commit/bdec804e9f4837292cdec5291dbb403a4c0048b6)), closes [#241](https://github.com/JackPlowman/project-status-checker/issues/241)
+* Add CodeQL configuration ([#269](https://github.com/JackPlowman/project-status-checker/issues/269)) ([e3c7a45](https://github.com/JackPlowman/project-status-checker/commit/e3c7a4581a45ebb4ec13400121ef72cd97027d06))
+* Add Lefthook Validate Job ([#289](https://github.com/JackPlowman/project-status-checker/issues/289)) ([1a21426](https://github.com/JackPlowman/project-status-checker/commit/1a21426a0584f4f247ff5c875593663fc50e4ad5))
+* Add Pyproject Checks ([#259](https://github.com/JackPlowman/project-status-checker/issues/259)) ([e953c0e](https://github.com/JackPlowman/project-status-checker/commit/e953c0ea1f27cdfa1e0803c00b64b4130b394a9d))
+* Add Zizmor Job ([#235](https://github.com/JackPlowman/project-status-checker/issues/235)) ([a6cb0bb](https://github.com/JackPlowman/project-status-checker/commit/a6cb0bb1b642d5d6c2a3680b7ca3529948b1b3e5)), closes [#234](https://github.com/JackPlowman/project-status-checker/issues/234)
+* Fix Zizmor Warnings ([#249](https://github.com/JackPlowman/project-status-checker/issues/249)) ([2f38f17](https://github.com/JackPlowman/project-status-checker/commit/2f38f17b3d8e5beeb1e93e4ea6bd5e1f38a416dd))
+* Force Log Colours ([#218](https://github.com/JackPlowman/project-status-checker/issues/218)) ([d0b061d](https://github.com/JackPlowman/project-status-checker/commit/d0b061d9df090d5af545d3afe414e0fa2319c68f)), closes [#217](https://github.com/JackPlowman/project-status-checker/issues/217)
+* Migrate Git Hooks to Lefthook ([#288](https://github.com/JackPlowman/project-status-checker/issues/288)) ([2c24179](https://github.com/JackPlowman/project-status-checker/commit/2c2417907164f617b599c8088162c8b15d3c4765))
+* Migrate Poetry to UV ([#272](https://github.com/JackPlowman/project-status-checker/issues/272)) ([ff0fc4a](https://github.com/JackPlowman/project-status-checker/commit/ff0fc4a070c4fb204081f6f5d9bfc2bc752a01bf)), closes [#271](https://github.com/JackPlowman/project-status-checker/issues/271)
+* Migrate SonarCloud GitHub Action to SonarQube ([#238](https://github.com/JackPlowman/project-status-checker/issues/238)) ([034f94f](https://github.com/JackPlowman/project-status-checker/commit/034f94fa2647b4890f2e06b83f6901174c17a643)), closes [#229](https://github.com/JackPlowman/project-status-checker/issues/229)
+* Refactor Git Hooks ([#280](https://github.com/JackPlowman/project-status-checker/issues/280)) ([5175d19](https://github.com/JackPlowman/project-status-checker/commit/5175d1910da06bce40a6960e39739cba16cb4ec2))
+* Refactor Python Actions ([#254](https://github.com/JackPlowman/project-status-checker/issues/254)) ([4f0051e](https://github.com/JackPlowman/project-status-checker/commit/4f0051ea4a24986f6254a3958e6968f9aee4e695))
+* Refactor Python Linting and Formatting Actions ([#248](https://github.com/JackPlowman/project-status-checker/issues/248)) ([fbfd692](https://github.com/JackPlowman/project-status-checker/commit/fbfd692884ab26425025474694471beb00546a40))
+* Regularly Clear Caches ([#268](https://github.com/JackPlowman/project-status-checker/issues/268)) ([b1f8288](https://github.com/JackPlowman/project-status-checker/commit/b1f8288b97ac91a96e172326e57fc18eb708fda8))
+* Rename GitHub Actions Steps ([#266](https://github.com/JackPlowman/project-status-checker/issues/266)) ([c57035d](https://github.com/JackPlowman/project-status-checker/commit/c57035d75a97f35f90b0126e85158a59bee0ca1c))
+* Scan GitHub Actions with CodeQL ([#256](https://github.com/JackPlowman/project-status-checker/issues/256)) ([c554107](https://github.com/JackPlowman/project-status-checker/commit/c5541079a244e115698330ce76f96a4e370066c1)), closes [#255](https://github.com/JackPlowman/project-status-checker/issues/255)
+* Schedule Code Checks to Run Daily ([#264](https://github.com/JackPlowman/project-status-checker/issues/264)) ([5279ac8](https://github.com/JackPlowman/project-status-checker/commit/5279ac8805139185a822e90e26a9956b66b2ce6b))
+* Set some job runners to ubuntu-22.04 ([#258](https://github.com/JackPlowman/project-status-checker/issues/258)) ([3f44dcf](https://github.com/JackPlowman/project-status-checker/commit/3f44dcff13060b20ebc4dca88fa6686bf737f263))
+* Update CodeLimit Action and Permissions ([#225](https://github.com/JackPlowman/project-status-checker/issues/225)) ([e35b232](https://github.com/JackPlowman/project-status-checker/commit/e35b2324d6315fecb675c12702f5b113304ac76e)), closes [#226](https://github.com/JackPlowman/project-status-checker/issues/226)
+* Update Dependabot Configuration ([#277](https://github.com/JackPlowman/project-status-checker/issues/277)) ([a1dbe8b](https://github.com/JackPlowman/project-status-checker/commit/a1dbe8ba9f475d81bc78b073892eb0172d039c6d))
+* Update Dependency Review ([#274](https://github.com/JackPlowman/project-status-checker/issues/274)) ([20e001e](https://github.com/JackPlowman/project-status-checker/commit/20e001e321c3a5c11c8576edb0bfdb26e768c7ff))
+* Update Labels ([#284](https://github.com/JackPlowman/project-status-checker/issues/284)) ([6ca6b6d](https://github.com/JackPlowman/project-status-checker/commit/6ca6b6dc3328bcaaeed69857c19d3bda3b7d0a7c))
+* Update license to 2025 ([#242](https://github.com/JackPlowman/project-status-checker/issues/242)) ([bc92116](https://github.com/JackPlowman/project-status-checker/commit/bc92116559be9e68f50d7a534437e565b170c460)), closes [#243](https://github.com/JackPlowman/project-status-checker/issues/243)
+* Update SonarCloud ([#286](https://github.com/JackPlowman/project-status-checker/issues/286)) ([5cd3922](https://github.com/JackPlowman/project-status-checker/commit/5cd3922db3bc6ffc0d6104a672c619fd2f432b3d))
+* Update SonarCloud Configuration ([#287](https://github.com/JackPlowman/project-status-checker/issues/287)) ([c32f2ca](https://github.com/JackPlowman/project-status-checker/commit/c32f2ca3a74a1bd5baf6c36a9d04b44923e47fa4))
+* Update SuperLinter Permissions ([#282](https://github.com/JackPlowman/project-status-checker/issues/282)) ([643ba35](https://github.com/JackPlowman/project-status-checker/commit/643ba35b56951570cd711865aeefb6d2c9d64fe2))
+* Upgrade Markdown Link Checker ([#261](https://github.com/JackPlowman/project-status-checker/issues/261)) ([0b09206](https://github.com/JackPlowman/project-status-checker/commit/0b09206c1140f27f70308cde9d6582b928528683))
+* Upgrade to Poetry V2 ([#253](https://github.com/JackPlowman/project-status-checker/issues/253)) ([97c2551](https://github.com/JackPlowman/project-status-checker/commit/97c2551ad69d0e5886de88a7134b47791c462c00)), closes [#252](https://github.com/JackPlowman/project-status-checker/issues/252)
+
 ## 1.0.0 (2024-12-03)
 
 
