@@ -190,6 +190,22 @@ jobs:
           sarif_file: results.sarif
           category: zizmor
 
+  lefthook-validate:
+    name: Lefthook Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v5.3.1
+        with:
+          version: "latest"
+      - name: Run Lefthook Validate
+        run: uvx lefthook validate
+
   run-local-action:
     name: Run Local Project Status Checker Action
     runs-on: ubuntu-22.04
