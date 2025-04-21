@@ -243,7 +243,7 @@ jobs:
       - name: Setup Dependencies
         uses: ./.github/actions/setup-dependencies
       - name: Download Artifact
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@v4.2.1
         with:
           name: md
           path: tests/github_summary
