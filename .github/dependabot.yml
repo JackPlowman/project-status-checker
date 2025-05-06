@@ -4,8 +4,8 @@ updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/"
-      - "/.github/actions/setup-dependencies"
-      - "/.github/actions/local"
+      - ".github/actions/setup-dependencies"
+      - ".github/actions/local"
     commit-message:
       prefix: "deps(github-actions)"
     schedule:
