@@ -12,11 +12,15 @@ class ApplicationConfiguration:
         """Initialize the ApplicationConfiguration class."""
         config_file_path = self.get_and_check_for_value("INPUT_CONFIG_FILE_PATH")
         self.config_file_path = (
-            config_file_path if "github/workspace" in config_file_path else f"github/workspace/{config_file_path}"
+            config_file_path
+            if "github/workspace" in config_file_path
+            else f"github/workspace/{config_file_path}"
         )
         database_file_path = self.get_and_check_for_value("INPUT_DATABASE_FILE_PATH")
         self.database_file_path = (
-            database_file_path if "github/workspace" in database_file_path else f"github/workspace/{database_file_path}"
+            database_file_path
+            if "github/workspace" in database_file_path
+            else f"github/workspace/{database_file_path}"
         )
 
     def get_and_check_for_value(self: Self, key: str) -> str:

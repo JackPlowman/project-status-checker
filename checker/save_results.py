@@ -9,11 +9,14 @@ from checker.url_check_result import URLCheckResult
 logger: stdlib.BoundLogger = get_logger()
 
 
-def save_results(application_configuration: ApplicationConfiguration, results: list[URLCheckResult]) -> None:
+def save_results(
+    application_configuration: ApplicationConfiguration, results: list[URLCheckResult]
+) -> None:
     """Save the results to a database.
 
     Args:
-        application_configuration (ApplicationConfiguration): The application configuration.
+        application_configuration (ApplicationConfiguration):
+            The application configuration.
         results (list[URLCheckResult]): The list of URL check results.
     """
     with connect(application_configuration.database_file_path) as connection:
@@ -23,7 +26,9 @@ def save_results(application_configuration: ApplicationConfiguration, results: l
             update_results_table(result, connection, cursor)
 
 
-def update_results_table(result: URLCheckResult, connection: Connection, cursor: Cursor) -> None:
+def update_results_table(
+    result: URLCheckResult, connection: Connection, cursor: Cursor
+) -> None:
     """Update the results table with the URL check result.
 
     Args:
@@ -36,7 +41,10 @@ def update_results_table(result: URLCheckResult, connection: Connection, cursor:
     url_id = cursor.fetchone()
     # If the URL is not in the database, add it
     if url_id is None:
-        cursor.execute("INSERT INTO url (alias, url) VALUES (?, ?)", (result.url.alias, result.url.address))
+        cursor.execute(
+            "INSERT INTO url (alias, url) VALUES (?, ?)",
+            (result.url.alias, result.url.address),
+        )
         cursor.execute("SELECT url_id FROM url WHERE url = ?", (result.url.address,))
         url_id = cursor.fetchone()
     # Add the result to the results table
@@ -60,11 +68,16 @@ def create_tables_if_not_exist(connection: Connection, cursor: Cursor) -> None:
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='url'")
     if cursor.fetchone() is None:
         logger.debug("Creating table url")
-        cursor.execute("CREATE TABLE url (url_id INTEGER PRIMARY KEY, alias TEXT NOT NULL, url TEXT NOT NULL)")
+        cursor.execute(
+            "CREATE TABLE url (url_id INTEGER PRIMARY KEY, "
+            "alias TEXT NOT NULL, url TEXT NOT NULL)"
+        )
         logger.debug("Created table url")
         tables_created.append("url")
         # Check if results table exists
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")
+    cursor.execute(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='results'"
+    )
     if cursor.fetchone() is None:
         logger.debug("Creating table results")
         cursor.execute(

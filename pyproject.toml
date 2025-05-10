@@ -4,30 +4,28 @@ name = "project-status-checker"
 dynamic = ["version"]
 requires-python = ">=3.13"
 dependencies = [
-  "structlog==25.2.0",
+  "structlog==25.3.0",
   "requests==2.32.3",
   "mdutils==1.6.0",
 ]
 
 [project.optional-dependencies]
 dev = [
-  "ruff==0.11.6",
+  "ruff==0.11.9",
   "pytest==8.3.5",
-  "pytest-cov==6.1.0",
+  "pytest-cov==6.1.1",
   "vulture==2.14",
-  "zizmor==1.6.0",
 ]
-test = ["Markdown==3.7", "beautifulsoup4==4.13.3"]
+test = ["Markdown==3.8", "beautifulsoup4==4.13.3"]
 
 [tool.uv]
-required-version = "0.6.14"
+required-version = "0.7.3"
 package = false
 
 [tool.setuptools]
 py-modules = ["checker", "tests"]
 
 [tool.ruff]
-line-length = 120
 target-version = "py313"
 
 [tool.ruff.lint]
@@ -42,6 +40,7 @@ ignore = [
   "D100",    # Ignore missing docstring in public module
   "N999",    # Ignore invalid module name
   "SIM112",  # Ignore Lowercase environment variables (used for GitHub actions)
+  "FBT001",  # Ignore Boolean-typed positional argument in function definition
 ]
 
 fixable = ["ALL"]
