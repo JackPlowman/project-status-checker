@@ -25,7 +25,9 @@ def run_checker() -> None:
     generate_action_summary(results)
 
 
-def load_configuration_file(application_configuration: ApplicationConfiguration) -> list[URL]:
+def load_configuration_file(
+    application_configuration: ApplicationConfiguration,
+) -> list[URL]:
     """Load the configuration."""
     file_path = application_configuration.config_file_path
     logger.debug("Checking for configuration file", file_path=file_path)
@@ -40,7 +42,10 @@ def load_configuration_file(application_configuration: ApplicationConfiguration)
     with Path(found_path).open() as file:
         file_contents = load(file)
     logger.debug("Loaded configuration file", file_contents=file_contents)
-    return [URL(url["alias"], url["url"], url["allowed_status_code"]) for url in file_contents["urls"]]
+    return [
+        URL(url["alias"], url["url"], url["allowed_status_code"])
+        for url in file_contents["urls"]
+    ]
 
 
 def check_urls(urls: list[URL]) -> list[URLCheckResult]:
@@ -50,7 +55,13 @@ def check_urls(urls: list[URL]) -> list[URLCheckResult]:
         try:
             logger.debug("Checking URL", url=url)
             response = get(url.address, timeout=1)
-            results.append(URLCheckResult(url, response.status_code, response.status_code == url.allowed_status_code))
+            results.append(
+                URLCheckResult(
+                    url,
+                    response.status_code,
+                    response.status_code == url.allowed_status_code,
+                )
+            )
         except RequestException:
             logger.exception("Failed to check URL", url=url)
     return results

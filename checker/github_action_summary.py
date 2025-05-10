@@ -16,7 +16,9 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
         results (list[URLCheckResult]): The list of URL check results.
     """
     if getenv("GITHUB_ACTION", "false") == "false":
-        logger.debug("Not running in GitHub Actions, skipping generating action summary")
+        logger.debug(
+            "Not running in GitHub Actions, skipping generating action summary"
+        )
         return
     logger.debug("Generating action summary")
     # Generate the markdown contents

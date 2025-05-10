@@ -11,7 +11,9 @@ from checker.url_check_result import URLCheckResult
         ("example2", "http://example.com", 404, False),
     ],
 )
-def test_url_check_result(alias: str, url_address: str, status_code: int, success: bool) -> None:  # noqa: FBT001
+def test_url_check_result(
+    alias: str, url_address: str, status_code: int, success: bool
+) -> None:
     # Arrange
     url = URL(alias, url_address, status_code)
     # Act

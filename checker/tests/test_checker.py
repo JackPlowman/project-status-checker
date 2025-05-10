@@ -25,16 +25,22 @@ def test_run_checker(
     # Assert
     mock_set_up_custom_logging.assert_called_once_with()
     mock_application_configuration.assert_called_once_with()
-    load_configuration_file.assert_called_once_with(mock_application_configuration.return_value)
+    load_configuration_file.assert_called_once_with(
+        mock_application_configuration.return_value
+    )
     mock_check_urls.assert_called_once_with(load_configuration_file.return_value)
-    mock_save_results.assert_called_once_with(mock_application_configuration.return_value, mock_check_urls.return_value)
+    mock_save_results.assert_called_once_with(
+        mock_application_configuration.return_value, mock_check_urls.return_value
+    )
     mock_generate_action_summary.assert_called_once_with(mock_check_urls.return_value)
 
 
 @patch(f"{FILE_PATH}.Path.exists", return_value=True)
 @patch(f"{FILE_PATH}.Path.open", new_callable=MagicMock)
 @patch(f"{FILE_PATH}.load")
-def test_load_configuration_file(mock_load: MagicMock, mock_open: MagicMock, mock_exists: MagicMock) -> None:
+def test_load_configuration_file(
+    mock_load: MagicMock, mock_open: MagicMock, mock_exists: MagicMock
+) -> None:
     """Test the load_configuration_file function."""
     mock_file_contents = {
         "urls": [

@@ -1,7 +1,11 @@
 from unittest.mock import MagicMock, patch
 
 from checker.application_configuration import ApplicationConfiguration
-from checker.save_results import create_tables_if_not_exist, save_results, update_results_table
+from checker.save_results import (
+    create_tables_if_not_exist,
+    save_results,
+    update_results_table,
+)
 from checker.url_check_result import URLCheckResult
 
 FILE_PATH = "checker.save_results"
@@ -9,7 +13,9 @@ FILE_PATH = "checker.save_results"
 
 @patch(f"{FILE_PATH}.connect")
 @patch(f"{FILE_PATH}.update_results_table")
-def test_save_results(mock_update_results_table: MagicMock, mock_connect: MagicMock) -> None:
+def test_save_results(
+    mock_update_results_table: MagicMock, mock_connect: MagicMock
+) -> None:
     """Test the save_results function."""
     # Arrange
     mock_connection = mock_connect.return_value.__enter__.return_value
@@ -25,10 +31,18 @@ def test_save_results(mock_update_results_table: MagicMock, mock_connect: MagicM
     # Assert
     mock_connect.assert_called_once_with("dummy_path")
     mock_connection.cursor.assert_called_once_with()
-    mock_cursor.execute.assert_any_call("SELECT name FROM sqlite_master WHERE type='table' AND name='url'")
-    mock_cursor.execute.assert_any_call("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")
-    mock_update_results_table.assert_any_call(mock_results[0], mock_connection, mock_cursor)
-    mock_update_results_table.assert_any_call(mock_results[1], mock_connection, mock_cursor)
+    mock_cursor.execute.assert_any_call(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='url'"
+    )
+    mock_cursor.execute.assert_any_call(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='results'"
+    )
+    mock_update_results_table.assert_any_call(
+        mock_results[0], mock_connection, mock_cursor
+    )
+    mock_update_results_table.assert_any_call(
+        mock_results[1], mock_connection, mock_cursor
+    )
     mock_connection.commit.assert_not_called()
 
 
@@ -42,11 +56,16 @@ def test_create_tables_if_not_exist() -> None:
     # Act
     create_tables_if_not_exist(mock_connection, mock_cursor)
     # Assert
-    mock_cursor.execute.assert_any_call("SELECT name FROM sqlite_master WHERE type='table' AND name='url'")
     mock_cursor.execute.assert_any_call(
-        "CREATE TABLE url (url_id INTEGER PRIMARY KEY, alias TEXT NOT NULL, url TEXT NOT NULL)"
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='url'"
     )
-    mock_cursor.execute.assert_any_call("SELECT name FROM sqlite_master WHERE type='table' AND name='results'")
+    mock_cursor.execute.assert_any_call(
+        "CREATE TABLE url (url_id INTEGER PRIMARY KEY, "
+        "alias TEXT NOT NULL, url TEXT NOT NULL)"
+    )
+    mock_cursor.execute.assert_any_call(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='results'"
+    )
     mock_cursor.execute.assert_any_call(
         "CREATE TABLE results ("
         "result_id INTEGER PRIMARY KEY, "
@@ -74,9 +93,15 @@ def test_update_results_table(mock_datetime: MagicMock) -> None:
     # Act
     update_results_table(mock_result, mock_connection, mock_cursor)
     # Assert
-    mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", (address,))
-    mock_cursor.execute.assert_any_call("INSERT INTO url (alias, url) VALUES (?, ?)", (alias, address))
-    mock_cursor.execute.assert_any_call("SELECT url_id FROM url WHERE url = ?", (address,))
+    mock_cursor.execute.assert_any_call(
+        "SELECT url_id FROM url WHERE url = ?", (address,)
+    )
+    mock_cursor.execute.assert_any_call(
+        "INSERT INTO url (alias, url) VALUES (?, ?)", (alias, address)
+    )
+    mock_cursor.execute.assert_any_call(
+        "SELECT url_id FROM url WHERE url = ?", (address,)
+    )
     mock_cursor.execute.assert_any_call(
         "INSERT INTO results (url_id, success, date_time_stamp) VALUES (?, ?, ?)",
         (1, True, "2023-10-10T10:10:10Z"),
