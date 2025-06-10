@@ -5,7 +5,7 @@ dynamic = ["version"]
 requires-python = "~=3.13"
 dependencies = [
   "structlog==25.3.0",
-  "requests==2.32.3",
+  "requests==2.32.4",
   "mdutils==1.6.0",
 ]
 
