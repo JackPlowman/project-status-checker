@@ -5,7 +5,7 @@ runs:
   using: "composite"
   steps:
     - name: Install Python and UV
-      uses: astral-sh/setup-uv@1edb52594c857e2b5b13128931090f0640537287 # v5.3.0
+      uses: astral-sh/setup-uv@e92bafb6253dcd438e0484186d7669ea7a8ca1cc # v6.4.3
       with:
         pyproject-file: "pyproject.toml"
         enable-cache: true
