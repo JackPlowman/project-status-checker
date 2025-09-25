@@ -18,9 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
-      attestations: write
-      id-token: write
+      packages: write # For pushing to GitHub Container Registry
+      attestations: write # For pushing attestation to GitHub Container Registry
+      id-token: write # For OIDC authentication to GitHub Container Registry
     steps:
       - name: Checkout Repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
