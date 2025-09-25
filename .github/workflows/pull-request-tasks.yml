@@ -11,7 +11,7 @@ jobs:
     name: Check Pull Request Title
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: read
+      pull-requests: read # For reading PR details
     steps:
       - name: Check Pull Request Title
         uses: deepakputhraya/action-pr-title@3864bebc79c5f829d25dd42d3c6579d040b0ef16 # v1.0.2
@@ -39,7 +39,7 @@ jobs:
   common-pull-request-tasks:
     name: Common Pull Request Tasks
     permissions:
-      pull-requests: write
+      pull-requests: write # For writing labels and comments on PRs
     uses: JackPlowman/reusable-workflows/.github/workflows/common-pull-request-tasks.yml@e77e648233b977246ecdb30836e2360b33acd1d3 # v2025.09.16.01
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
