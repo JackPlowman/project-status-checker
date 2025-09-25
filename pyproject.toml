@@ -2,7 +2,7 @@
 [project]
 name = "project-status-checker"
 dynamic = ["version"]
-requires-python = "~=3.13"
+requires-python = "~=3.13.0"
 dependencies = [
   "structlog==25.3.0",
   "requests==2.32.4",
@@ -19,7 +19,7 @@ dev = [
 test = ["Markdown==3.8", "beautifulsoup4==4.13.3"]
 
 [tool.uv]
-required-version = "0.7.12"
+required-version = "~=0.8.0"
 package = false
 
 [tool.setuptools]
