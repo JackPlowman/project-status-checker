@@ -153,6 +153,14 @@ zizmor-check:
     uvx zizmor . --persona=auditor
 
 # ------------------------------------------------------------------------------
+# Actionlint
+# ------------------------------------------------------------------------------
+
+# Run actionlint checks
+actionlint-check:
+    actionlint
+
+# ------------------------------------------------------------------------------
 # Pinact
 # ------------------------------------------------------------------------------
 
@@ -169,9 +177,9 @@ pinact-update:
     pinact run --update
 
 # ------------------------------------------------------------------------------
-# Git Hooks
+# EditorConfig
 # ------------------------------------------------------------------------------
 
-# Install pre commit hook to run on all commits
-install-git-hooks:
-    lefthook install -f
+# Check files format with EditorConfig
+editorconfig-check:
+    editorconfig-checker
