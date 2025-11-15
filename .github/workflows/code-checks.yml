@@ -38,7 +38,7 @@ jobs:
     with:
       language: ${{ matrix.language }}
 
-    run-python-lint-checks:
+  run-python-lint-checks:
     name: Run Python Lint Checks
     runs-on: ubuntu-latest
     permissions:
