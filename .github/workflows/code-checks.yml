@@ -38,10 +38,11 @@ jobs:
     with:
       language: ${{ matrix.language }}
 
-  check-python-code-format-and-quality:
-    name: Check Python Code Format and Quality
+    run-python-lint-checks:
+    name: Run Python Lint Checks
     runs-on: ubuntu-latest
     permissions:
+      statuses: write
       security-events: write # Allow the workflow to upload analysis results
     steps:
       - name: Checkout Repository
@@ -49,27 +50,51 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Setup Dependencies
+      - name: Set up dependencies
         uses: ./.github/actions/setup-dependencies
-      - name: Check Python Code Quality (Ruff)
+      - name: Generate Ruff Sarif
         run: just ruff-lint-check
         env:
           RUFF_OUTPUT_FORMAT: "sarif"
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
-      - name: Upload analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@014f16e7ab1402f30e7c3329d33797e7948572db # v4.31.3
+      - name: Upload Ruff analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@64d10c13136e1c5bce3e5fbde8d4906eeaafc885 # v3.30.6
         with:
           sarif_file: ruff-results.sarif
           wait-for-processing: true
+      - name: Check Python Code Linting (Ruff)
+        run: just ruff-lint-check
+        env:
+          RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-format-checks:
+    name: Run Python Format Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
       - name: Check Python Code Format (Ruff)
         run: just ruff-format-check
         env:
           RUFF_OUTPUT_FORMAT: "github"
-      - name: Check Python Code Quality (Ruff)
-        run: just ruff-lint-check
-        env:
-          RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-dead-code-checks:
+    name: Run Python Dead Code Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
       - name: Check Python Code for Dead Code (Vulture)
         run: just vulture
 
