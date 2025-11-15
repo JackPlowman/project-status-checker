@@ -98,6 +98,20 @@ jobs:
       - name: Check Python Code for Dead Code (Vulture)
         run: just vulture
 
+  run-python-lockfile-check:
+    name: Run Python Lockfile Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: ./.github/actions/setup-dependencies
+      - name: Check UV Lockfile
+        run: just uv-lock-check
+
   unit-test:
     name: Run Unit Tests
     runs-on: ubuntu-latest
