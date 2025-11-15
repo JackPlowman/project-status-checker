@@ -1,10 +1,12 @@
 from datetime import UTC, datetime
 from sqlite3 import Connection, Cursor, connect
+from typing import TYPE_CHECKING
 
 from structlog import get_logger, stdlib
 
-from checker.application_configuration import ApplicationConfiguration
-from checker.url_check_result import URLCheckResult
+if TYPE_CHECKING:
+    from checker.application_configuration import ApplicationConfiguration
+    from checker.url_check_result import URLCheckResult
 
 logger: stdlib.BoundLogger = get_logger()
 
