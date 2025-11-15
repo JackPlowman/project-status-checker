@@ -1,10 +1,12 @@
 from os import environ, getenv
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from mdutils.mdutils import MdUtils
 from structlog import get_logger, stdlib
 
-from checker.url_check_result import URLCheckResult
+if TYPE_CHECKING:
+    from checker.url_check_result import URLCheckResult
 
 logger: stdlib.BoundLogger = get_logger()
 
