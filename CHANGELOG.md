@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/JackPlowman/project-status-checker/compare/v1.1.0...v1.1.1) (2025-12-31)
+
+
+### 🧰 Maintenance
+
+* Lefthook with Prek ([#497](https://github.com/JackPlowman/project-status-checker/issues/497)) ([510d880](https://github.com/JackPlowman/project-status-checker/commit/510d880a0d277b57266ce3e58e1c3f4e0d923f79))
+
 ## [1.1.0](https://github.com/JackPlowman/project-status-checker/compare/v1.0.0...v1.1.0) (2025-11-15)
 
 
