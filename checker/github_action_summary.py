@@ -28,7 +28,9 @@ def generate_action_summary(results: list[URLCheckResult]) -> None:
     table_headers = ["URL Address", "Status Code", "Success"]
     list_of_strings = [*table_headers]
     for result in results:
-        list_of_strings.extend([result.url.address, result.status_code, result.success])
+        list_of_strings.extend(
+            [result.url.address, str(result.status_code), str(result.success)]
+        )
     markdown_file.new_table(
         columns=len(table_headers),
         rows=int(len(list_of_strings) / len(table_headers)),

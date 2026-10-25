@@ -4,8 +4,10 @@ updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/"
-      - ".github/actions/setup-dependencies"
-      - ".github/actions/local"
+      - "/.github/actions/setup-dependencies"
+      - "/.github/actions/local"
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "deps(github-actions)"
     schedule:
@@ -26,6 +28,8 @@ updates:
 
   - package-ecosystem: "docker"
     directory: "/"
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "deps(docker)"
     schedule:
@@ -44,6 +48,8 @@ updates:
 
   - package-ecosystem: "uv"
     directory: "/"
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "deps(python)"
     schedule:
