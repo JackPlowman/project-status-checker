@@ -133,7 +133,6 @@ jobs:
   unit-test:
     name: Run Unit Tests
     runs-on: ubuntu-latest
-    environment: sonarcloud
     steps:
       - name: Checkout Repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -144,11 +143,6 @@ jobs:
         uses: $/.github/actions/setup-dependencies
       - name: Run Unit Tests
         run: just unit-test
-      - name: SonarCloud Scan
-        uses: Sonarsource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9 # v8.3.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   run-local-action:
     name: Run Local Project Status Checker Action
