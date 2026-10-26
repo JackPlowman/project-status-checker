@@ -1,0 +1,70 @@
+# Pre-commit configuration for use with `prek` (https://github.com/j178/prek)
+
+minimum_prek_version: "0.5.7"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # frozen: v6.0.0
+    hooks:
+      - id: check-merge-conflict
+        name: Check Merge Conflicts
+        description: Detects merge conflict markers in files
+      - id: check-case-conflict
+        name: Check Case Conflicts
+        description: Detects files that would conflict on case-insensitive filesystems
+      - id: check-added-large-files
+        name: Check Added Large Files
+        description: Prevents adding large files to the repository
+        args: [--maxkb=1024]
+      - id: detect-private-key
+        name: Detect Private Key
+        description: Detects private keys that may have been added to the repository
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e # frozen: v8.30.1
+    hooks:
+      - id: gitleaks
+        name: Gitleaks - Secret Detection
+        description: Scan for secrets using Gitleaks
+        language_version: "go1.26"
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: e8b4e28241a9ae8296ba6e4a491b5da4eda73283 # frozen: 3.11.1
+    hooks:
+      - id: editorconfig-checker
+        name: EditorConfig Checker
+        description: Validates files against .editorconfig rules
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: c92afdf2c6ca336aaa8f39e2bd8d48f62dbd8e1f # frozen: v1.31.1
+    hooks:
+      - id: zizmor
+        name: Zizmor
+        description: "Find security issues in GitHub Actions CI/CD setups"
+        args: ["--persona=auditor"]
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Check Prettier Format
+        language: node
+        entry: prettier
+        additional_dependencies:
+          - prettier@3.9.10
+        args: ["--check"]
+        files: "(?i)(\\.(md|markdown|ya?ml|json)$|^(README|LICENSE|CONTRIBUTING|CODE_OF_CONDUCT|SECURITY|SUPPORT)(\\.md)?$)"
+      - id: justfile-format-check
+        name: Justfile Format Check
+        language: python
+        entry: just
+        additional_dependencies:
+          - rust-just==1.59.0
+        args: ["format-check"]
+        files: "(?i)(^justfile$|\\.just$)"
+        pass_filenames: false
+      - id: pinact
+        name: Pinact Check
+        language: golang
+        entry: pinact
+        additional_dependencies:
+          - github.com/suzuki-shunsuke/pinact/v5/cmd/pinact@v5.0.1
+        args: ["run", "--exclude", "^docker://", "--verify", "--check"]
+        files: "^\\.github/(workflows|actions)/.*\\.ya?ml$|(^|/)action\\.ya?ml$"
+        pass_filenames: false
+        language_version: "go1.27.3"

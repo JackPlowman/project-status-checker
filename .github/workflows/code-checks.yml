@@ -4,9 +4,14 @@ on:
   push:
     branches: [main]
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, ready_for_review]
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -22,7 +27,7 @@ jobs:
       actions: read # Allow the workflow to read actions metadata
       pull-requests: write # Allow the workflow to create and modify pull request comments
       security-events: write # Allow the workflow to upload analysis results
-    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@53ec3305b882378b1be900dd62ac8d5957fa6106 # v2025.11.15.01
+    uses: JackPlowman/reusable-workflows/.github/workflows/common-code-checks.yml@f82d61d53648ae90f8a0406c0f4bbf1aef332337 # v2026.10.25.01
     secrets:
       workflow_github_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -34,24 +39,24 @@ jobs:
     strategy:
       matrix:
         language: [actions, python]
-    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@53ec3305b882378b1be900dd62ac8d5957fa6106 # v2025.11.15.01
+    uses: JackPlowman/reusable-workflows/.github/workflows/codeql-analysis.yml@f82d61d53648ae90f8a0406c0f4bbf1aef332337 # v2026.10.25.01
     with:
       language: ${{ matrix.language }}
 
   run-python-lint-checks:
-    name: Run Python Lint Checks
+    name: Check Python Code Format and Quality
     runs-on: ubuntu-latest
     permissions:
-      statuses: write
+      contents: read
       security-events: write # Allow the workflow to upload analysis results
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-dependencies
+        uses: $/.github/actions/setup-dependencies
       - name: Generate Ruff Sarif
         run: just ruff-lint-check
         env:
@@ -59,7 +64,7 @@ jobs:
           RUFF_OUTPUT_FILE: "ruff-results.sarif"
         continue-on-error: true
       - name: Upload Ruff analysis results to GitHub
-        uses: github/codeql-action/upload-sarif@64d10c13136e1c5bce3e5fbde8d4906eeaafc885 # v3.30.6
+        uses: github/codeql-action/upload-sarif@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           sarif_file: ruff-results.sarif
           wait-for-processing: true
@@ -67,34 +72,49 @@ jobs:
         run: just ruff-lint-check
         env:
           RUFF_OUTPUT_FORMAT: "github"
+      - name: Check Python Code Format (Ruff)
+        run: just ruff-format-check
 
   run-python-format-checks:
     name: Run Python Format Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-dependencies
+        uses: $/.github/actions/setup-dependencies
       - name: Check Python Code Format (Ruff)
         run: just ruff-format-check
         env:
           RUFF_OUTPUT_FORMAT: "github"
+
+  run-python-type-checks:
+    name: Run Python Type Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up dependencies
+        uses: $/.github/actions/setup-dependencies
+      - name: Check Python Types
+        run: just ty-check
 
   run-python-dead-code-checks:
     name: Run Python Dead Code Checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-dependencies
+        uses: $/.github/actions/setup-dependencies
       - name: Check Python Code for Dead Code (Vulture)
         run: just vulture
 
@@ -103,12 +123,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Set up dependencies
-        uses: ./.github/actions/setup-dependencies
+        uses: $/.github/actions/setup-dependencies
       - name: Check UV Lockfile
         run: just uv-lock-check
 
@@ -117,31 +137,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Setup Dependencies
-        uses: ./.github/actions/setup-dependencies
+        uses: $/.github/actions/setup-dependencies
       - name: Run Unit Tests
         run: just unit-test
-      - name: SonarCloud Scan
-        uses: Sonarsource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 # v6.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   run-local-action:
     name: Run Local Project Status Checker Action
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Run Project Status Checker Action
-        uses: ./.github/actions/local
+        uses: $/.github/actions/local
         with:
           config_file_path: "examples/full_example.json"
       - name: Download GitHub Action Summary
@@ -159,14 +174,14 @@ jobs:
     needs: run-local-action
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
       - name: Setup Dependencies
-        uses: ./.github/actions/setup-dependencies
+        uses: $/.github/actions/setup-dependencies
       - name: Download Artifact
-        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: md
           path: tests/github_summary

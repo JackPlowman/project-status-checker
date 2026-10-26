@@ -4,7 +4,7 @@
 
 # Install all python dependencies
 install:
-    uv sync --all-extras
+    uv sync --locked --all-extras
 
 # Run the checker
 run:
@@ -153,7 +153,7 @@ gitleaks-detect:
 
 # Run prek checking on all pre-commit config files
 prek-check:
-    find . -name "pre-commit-config.*" -exec prek validate-config -c {} \;
+    prek validate-config .pre-commit-config.yaml
 
 # ------------------------------------------------------------------------------
 # Zizmor

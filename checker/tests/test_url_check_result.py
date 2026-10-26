@@ -1,7 +1,13 @@
+from typing import get_type_hints
+
 import pytest
 
 from checker.url import URL
 from checker.url_check_result import URLCheckResult
+
+
+def test_result_annotations_are_resolvable() -> None:
+    assert get_type_hints(URLCheckResult)["url"] is URL
 
 
 @pytest.mark.parametrize(

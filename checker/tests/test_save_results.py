@@ -22,7 +22,7 @@ def test_save_results(
     mock_cursor = mock_connection.cursor.return_value
     mock_application_configuration = MagicMock(spec=ApplicationConfiguration)
     mock_application_configuration.database_file_path = "dummy_path"
-    mock_results = [
+    mock_results: list[URLCheckResult] = [
         MagicMock(spec=URLCheckResult),
         MagicMock(spec=URLCheckResult),
     ]

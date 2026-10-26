@@ -3,7 +3,7 @@ description: Check the statuses of urls
 
 runs:
   using: "docker"
-  image: "../../../Dockerfile"
+  image: "../../../Dockerfile" # zizmor: ignore[unpinned-images] repository Dockerfile, not a registry image
   env:
     GITHUB_ACTION: "true"
     FORCE_COLOR: "true"
